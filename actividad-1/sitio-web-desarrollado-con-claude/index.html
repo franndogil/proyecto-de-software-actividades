@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Sitio estático con las plantas de interior y de exterior que cultivo en mi jardín, con una ficha en PDF para descargar de cada una.">
+  <meta name="description" content="Catálogo estático de las plantas que cultivo en mi jardín, clasificadas por tipo, ubicación, luz, clima, uso y cuidados, con una ficha en PDF para descargar de cada una.">
   <title>El jardín de Franco · Plantas de interior y de exterior</title>
   <link rel="stylesheet" href="estilosIA.css">
 </head>
@@ -47,9 +47,10 @@
       <p class="portada-volanta">Jardín particular · Buenos Aires</p>
       <h1>Las plantas que cultivo en mi jardín</h1>
       <p class="portada-texto">
-        Ocho plantas que tengo en casa, divididas entre las que viven puertas adentro y
-        las que están en el cantero. De cada una vas a encontrar una foto, sus cuidados
-        básicos y una ficha completa en PDF para descargar.
+        Diecisiete plantas que tengo en casa: las de adentro, las del cantero, las de la
+        huerta y las que trepan por la medianera. De cada una vas a encontrar una foto,
+        sus cuidados básicos, las categorías a las que pertenece y una ficha completa
+        en PDF para descargar.
       </p>
       <p class="portada-acciones">
         <a class="boton" href="#plantas"><span>Ver las plantas</span></a>
@@ -59,69 +60,194 @@
   </section>
 
   <!-- ============================= PLANTAS =============================
-       Filtro por categoría 100 % estático: tres radio buttons ocultos
-       (#cat-todas, #cat-interior, #cat-exterior) y una lista desplegable
-       hecha con el elemento details. Cada opción es una etiqueta label
-       que marca su radio, y el CSS oculta el grupo que no corresponde. -->
+       Filtro por categoría 100 % estático: un radio button oculto por
+       categoría y una lista desplegable hecha con el elemento details.
+       Cada opción es una etiqueta label que marca su radio y el CSS
+       oculta las tarjetas que no pertenecen a esa categoría. El bloque
+       de abajo lo genera gen-catalogo.js a partir de datos.js. -->
   <main>
   <section class="seccion" id="plantas">
     <div class="contenedor">
       <p class="volanta">Catálogo</p>
       <h2>Plantas</h2>
       <p class="seccion-intro">
-        Elegí una categoría en la lista desplegable para ver solo las plantas de interior
-        o solo las de exterior. Cada tarjeta tiene el enlace a su ficha en PDF.
+        Elegí una categoría en la lista desplegable para filtrar el catálogo. Las categorías
+        están agrupadas por tipo de planta, ubicación, luz, clima, uso, papel en el jardín y
+        cuidados: una misma planta puede pertenecer a varias a la vez. El filtro busca en todo
+        el catálogo, sin importar en qué bloque esté la tarjeta.
       </p>
 
+      <!-- CATALOGO:INICIO -->
       <div class="filtro-bloque">
 
-        <input class="filtro-radio" type="radio" name="categoria" id="cat-todas" checked>
-        <input class="filtro-radio" type="radio" name="categoria" id="cat-interior">
-        <input class="filtro-radio" type="radio" name="categoria" id="cat-exterior">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-todas" checked>
+        <input class="filtro-radio" type="radio" name="categoria" id="f-herbaceas">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-arbustos">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-arboles">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-trepadoras">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-suculentas">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-helechos">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-gramineas">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-interior">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-exterior">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-maceta">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-balcon">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-sol">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-media-sombra">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-sombra">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-tropicales">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-rusticas">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-sequia">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-nativas">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-florales">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-perfumadas">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-follaje">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-aromaticas">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-medicinales">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-comestibles">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-frutales">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-cercos">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-cubresuelos">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-colgantes">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-bajo-mantenimiento">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-riego-frecuente">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-pet-safe">
+        <input class="filtro-radio" type="radio" name="categoria" id="f-polinizadores">
 
         <details class="filtro">
           <summary class="filtro-boton">
             <span class="filtro-etiqueta">Categoría</span>
             <span class="filtro-valor">
               <span class="valor valor-todas">Todas las plantas</span>
-              <span class="valor valor-interior">Plantas de interior</span>
-              <span class="valor valor-exterior">Plantas de exterior</span>
+              <span class="valor valor-herbaceas">Herbáceas</span>
+              <span class="valor valor-arbustos">Arbustos</span>
+              <span class="valor valor-arboles">Árboles</span>
+              <span class="valor valor-trepadoras">Trepadoras</span>
+              <span class="valor valor-suculentas">Suculentas y cactus</span>
+              <span class="valor valor-helechos">Helechos</span>
+              <span class="valor valor-gramineas">Gramíneas</span>
+              <span class="valor valor-interior">De interior</span>
+              <span class="valor valor-exterior">De exterior</span>
+              <span class="valor valor-maceta">Aptas para maceta</span>
+              <span class="valor valor-balcon">Para balcones y terrazas</span>
+              <span class="valor valor-sol">Pleno sol</span>
+              <span class="valor valor-media-sombra">Media sombra</span>
+              <span class="valor valor-sombra">Sombra</span>
+              <span class="valor valor-tropicales">Tropicales</span>
+              <span class="valor valor-rusticas">Rústicas al frío</span>
+              <span class="valor valor-sequia">Resistentes a la sequía</span>
+              <span class="valor valor-nativas">Nativas de Sudamérica</span>
+              <span class="valor valor-florales">Florales</span>
+              <span class="valor valor-perfumadas">De flores perfumadas</span>
+              <span class="valor valor-follaje">Follaje decorativo</span>
+              <span class="valor valor-aromaticas">Aromáticas</span>
+              <span class="valor valor-medicinales">Medicinales</span>
+              <span class="valor valor-comestibles">Huerta y comestibles</span>
+              <span class="valor valor-frutales">Frutales</span>
+              <span class="valor valor-cercos">Cercos y borduras</span>
+              <span class="valor valor-cubresuelos">Cubresuelos</span>
+              <span class="valor valor-colgantes">Colgantes</span>
+              <span class="valor valor-bajo-mantenimiento">Bajo mantenimiento</span>
+              <span class="valor valor-riego-frecuente">Riego frecuente</span>
+              <span class="valor valor-pet-safe">Seguras para mascotas</span>
+              <span class="valor valor-polinizadores">Atraen polinizadores</span>
             </span>
             <span class="filtro-flecha" aria-hidden="true"></span>
           </summary>
 
-          <ul class="filtro-opciones">
-            <li><label for="cat-todas">Todas las plantas <span class="cantidad">8</span></label></li>
-            <li><label for="cat-interior">Plantas de interior <span class="cantidad">4</span></label></li>
-            <li><label for="cat-exterior">Plantas de exterior <span class="cantidad">4</span></label></li>
+          <div class="filtro-opciones">
+          <ul class="filtro-lista">
+            <li><label for="f-todas">Todas las plantas <span class="cantidad">17</span></label></li>
           </ul>
+          <p class="filtro-eje">Tipo de planta<span>Qué es botánicamente y qué porte tiene</span></p>
+          <ul class="filtro-lista">
+            <li><label for="f-herbaceas">Herbáceas <span class="cantidad">3</span></label></li>
+            <li><label for="f-arbustos">Arbustos <span class="cantidad">4</span></label></li>
+            <li><label for="f-arboles">Árboles <span class="cantidad">1</span></label></li>
+            <li><label for="f-trepadoras">Trepadoras <span class="cantidad">5</span></label></li>
+            <li><label for="f-suculentas">Suculentas y cactus <span class="cantidad">2</span></label></li>
+            <li><label for="f-helechos">Helechos <span class="cantidad">1</span></label></li>
+            <li><label for="f-gramineas">Gramíneas <span class="cantidad">1</span></label></li>
+          </ul>
+          <p class="filtro-eje">Dónde ubicarla<span>Dónde puede vivir, no solo dónde la tengo yo</span></p>
+          <ul class="filtro-lista">
+            <li><label for="f-interior">De interior <span class="cantidad">7</span></label></li>
+            <li><label for="f-exterior">De exterior <span class="cantidad">14</span></label></li>
+            <li><label for="f-maceta">Aptas para maceta <span class="cantidad">16</span></label></li>
+            <li><label for="f-balcon">Para balcones y terrazas <span class="cantidad">8</span></label></li>
+          </ul>
+          <p class="filtro-eje">Luz que necesita<span>Horas y tipo de luz para que prospere</span></p>
+          <ul class="filtro-lista">
+            <li><label for="f-sol">Pleno sol <span class="cantidad">9</span></label></li>
+            <li><label for="f-media-sombra">Media sombra <span class="cantidad">11</span></label></li>
+            <li><label for="f-sombra">Sombra <span class="cantidad">5</span></label></li>
+          </ul>
+          <p class="filtro-eje">Clima y resistencia<span>Qué tolera y de dónde viene</span></p>
+          <ul class="filtro-lista">
+            <li><label for="f-tropicales">Tropicales <span class="cantidad">3</span></label></li>
+            <li><label for="f-rusticas">Rústicas al frío <span class="cantidad">5</span></label></li>
+            <li><label for="f-sequia">Resistentes a la sequía <span class="cantidad">6</span></label></li>
+            <li><label for="f-nativas">Nativas de Sudamérica <span class="cantidad">3</span></label></li>
+          </ul>
+          <p class="filtro-eje">Uso y aprovechamiento<span>Para qué se cultiva</span></p>
+          <ul class="filtro-lista">
+            <li><label for="f-florales">Florales <span class="cantidad">6</span></label></li>
+            <li class="opcion-sub"><label for="f-perfumadas">De flores perfumadas <span class="cantidad">4</span></label></li>
+            <li><label for="f-follaje">Follaje decorativo <span class="cantidad">7</span></label></li>
+            <li><label for="f-aromaticas">Aromáticas <span class="cantidad">4</span></label></li>
+            <li><label for="f-medicinales">Medicinales <span class="cantidad">5</span></label></li>
+            <li><label for="f-comestibles">Huerta y comestibles <span class="cantidad">4</span></label></li>
+            <li class="opcion-sub"><label for="f-frutales">Frutales <span class="cantidad">1</span></label></li>
+          </ul>
+          <p class="filtro-eje">Uso en el jardín<span>Qué papel cumple en el diseño del espacio</span></p>
+          <ul class="filtro-lista">
+            <li><label for="f-cercos">Cercos y borduras <span class="cantidad">7</span></label></li>
+            <li><label for="f-cubresuelos">Cubresuelos <span class="cantidad">3</span></label></li>
+            <li><label for="f-colgantes">Colgantes <span class="cantidad">4</span></label></li>
+          </ul>
+          <p class="filtro-eje">Cuidados y compañía<span>Cuánto trabajo dan y con quién conviven</span></p>
+          <ul class="filtro-lista">
+            <li><label for="f-bajo-mantenimiento">Bajo mantenimiento <span class="cantidad">9</span></label></li>
+            <li><label for="f-riego-frecuente">Riego frecuente <span class="cantidad">5</span></label></li>
+            <li><label for="f-pet-safe">Seguras para mascotas <span class="cantidad">4</span></label></li>
+            <li><label for="f-polinizadores">Atraen polinizadores <span class="cantidad">6</span></label></li>
+          </ul>
+          </div>
         </details>
 
         <div class="catalogo">
 
-          <!-- ---------------- PLANTAS DE INTERIOR ---------------- -->
           <section class="grupo grupo-interior" id="plantas-interior">
             <header class="grupo-titulo">
               <h3>Plantas de interior</h3>
-              <p>Viven adentro todo el año, con luz indirecta y riegos espaciados.</p>
+              <p>Las que viven puertas adentro todo el año, con luz indirecta y riegos espaciados.</p>
             </header>
 
             <div class="grilla">
 
-              <article class="card">
+              <article class="card c-trepadoras c-interior c-maceta c-media-sombra c-sombra c-tropicales c-follaje c-colgantes c-bajo-mantenimiento">
                 <h4 class="card-nombre">Potus</h4>
                 <img class="card-img" src="imágenes/potus.jpg" loading="lazy"
                      alt="Guías de potus con hojas acorazonadas verdes y amarillas">
                 <div class="card-info">
                   <p class="card-cientifico">Epipremnum aureum</p>
-                  <p class="card-texto">
-                    Trepadora de hojas acorazonadas y variegadas, famosa por ser prácticamente
-                    indestructible. Crece en agua o en tierra y, con un tutor, supera los dos metros.
-                  </p>
+                  <p class="card-texto">Trepadora de hojas acorazonadas y variegadas, famosa por ser prácticamente indestructible. Crece en agua o en tierra y, con un tutor, supera los dos metros.</p>
                   <ul class="card-datos">
-                    <li><span>Luz</span> Media indirecta</li>
-                    <li><span>Riego</span> Cuando los primeros 2-3 cm del sustrato están secos</li>
-                    <li><span>Origen</span> Sudeste asiático</li>
+                    <li><span>Luz</span> Luz media indirecta; tolera zonas poco iluminadas</li>
+                    <li><span>Riego</span> Moderado: regar cuando los 2-3 cm superiores del sustrato estén secos</li>
+                    <li><span>Origen</span> Sudeste asiático (Malasia, Indonesia) y Nueva Guinea</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Trepadoras</li>
+              <li>De interior</li>
+              <li>Aptas para maceta</li>
+              <li>Media sombra</li>
+              <li>Sombra</li>
+              <li>Tropicales</li>
+              <li>Follaje decorativo</li>
+              <li>Colgantes</li>
+              <li>Bajo mantenimiento</li>
                   </ul>
                 </div>
                 <a class="boton boton-pdf" href="info/potus.pdf" download>
@@ -129,20 +255,30 @@
                 </a>
               </article>
 
-              <article class="card">
+              <article class="card c-suculentas c-interior c-exterior c-maceta c-balcon c-media-sombra c-sombra c-sequia c-follaje c-bajo-mantenimiento">
                 <h4 class="card-nombre">Lengua de suegra</h4>
                 <img class="card-img" src="imágenes/lengua-de-suegra.jpg" loading="lazy"
                      alt="Lengua de suegra en maceta, con hojas erectas y jaspeadas">
                 <div class="card-info">
-                  <p class="card-cientifico">Dracaena trifasciata</p>
-                  <p class="card-texto">
-                    Semisuculenta de hojas erectas, rígidas y jaspeadas. Aguanta el aire seco,
-                    la poca luz y los olvidos de riego mejor que cualquier otra planta de interior.
-                  </p>
+                  <p class="card-cientifico">Dracaena trifasciata (sin. Sansevieria trifasciata)</p>
+                  <p class="card-texto">Planta semisuculenta de hojas erectas, rígidas y jaspeadas. Aguanta el aire seco, la poca luz y los olvidos de riego mejor que ninguna otra planta de interior.</p>
                   <ul class="card-datos">
-                    <li><span>Luz</span> De semisombra a luz intensa</li>
-                    <li><span>Riego</span> Escaso, dejando secar el sustrato por completo</li>
-                    <li><span>Origen</span> África tropical occidental</li>
+                    <li><span>Luz</span> Se adapta desde la semisombra hasta la luz intensa</li>
+                    <li><span>Riego</span> Escaso: dejar secar por completo el sustrato entre riegos</li>
+                    <li><span>Origen</span> África tropical occidental, desde Nigeria hasta la R. D. del Congo</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Suculentas y cactus</li>
+              <li>De interior</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Para balcones y terrazas</li>
+              <li>Media sombra</li>
+              <li>Sombra</li>
+              <li>Resistentes a la sequía</li>
+              <li>Follaje decorativo</li>
+              <li>Bajo mantenimiento</li>
                   </ul>
                 </div>
                 <a class="boton boton-pdf" href="info/lengua-de-suegra.pdf" download>
@@ -150,20 +286,26 @@
                 </a>
               </article>
 
-              <article class="card">
+              <article class="card c-trepadoras c-interior c-maceta c-media-sombra c-tropicales c-follaje">
                 <h4 class="card-nombre">Costilla de Adán</h4>
                 <img class="card-img" src="imágenes/costilla-de-adan.jpg" loading="lazy"
                      alt="Hojas grandes y perforadas de costilla de Adán">
                 <div class="card-info">
                   <p class="card-cientifico">Monstera deliciosa</p>
-                  <p class="card-texto">
-                    Trepadora tropical de hojas enormes, perforadas y brillantes. Con un tutor de
-                    musgo se convierte en la planta más escenográfica de la casa.
-                  </p>
+                  <p class="card-texto">Trepadora tropical de hojas enormes, perforadas y brillantes. Es la planta de interior más escenográfica del jardín: con un tutor de musgo puede superar los dos metros.</p>
                   <ul class="card-datos">
-                    <li><span>Luz</span> Indirecta abundante, nunca sol del mediodía</li>
-                    <li><span>Riego</span> Regular, sin encharcar</li>
-                    <li><span>Origen</span> Selvas de México a Argentina</li>
+                    <li><span>Luz</span> Luz indirecta abundante; nunca sol directo del mediodía</li>
+                    <li><span>Riego</span> Regular, manteniendo el sustrato apenas húmedo, sin encharcar</li>
+                    <li><span>Origen</span> Selvas tropicales desde el centro y sur de México hasta el norte de Argentina</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Trepadoras</li>
+              <li>De interior</li>
+              <li>Aptas para maceta</li>
+              <li>Media sombra</li>
+              <li>Tropicales</li>
+              <li>Follaje decorativo</li>
                   </ul>
                 </div>
                 <a class="boton boton-pdf" href="info/costilla-de-adan.pdf" download>
@@ -171,20 +313,32 @@
                 </a>
               </article>
 
-              <article class="card">
+              <article class="card c-herbaceas c-interior c-exterior c-maceta c-balcon c-media-sombra c-sombra c-follaje c-colgantes c-cubresuelos c-bajo-mantenimiento c-pet-safe">
                 <h4 class="card-nombre">Cinta</h4>
                 <img class="card-img" src="imágenes/cinta.jpg" loading="lazy"
                      alt="Mata de cinta con hojas largas de borde blanco y estolones">
                 <div class="card-info">
                   <p class="card-cientifico">Chlorophytum comosum</p>
-                  <p class="card-texto">
-                    También llamada malamadre o lazo de amor. De la roseta central salen estolones
-                    colgantes con hijuelos que enraízan solos: una maceta se convierte en diez.
-                  </p>
+                  <p class="card-texto">También llamada malamadre o lazo de amor. De la roseta central salen estolones colgantes con hijuelos que enraízan solos: una maceta se convierte en diez.</p>
                   <ul class="card-datos">
-                    <li><span>Luz</span> Media, sin sol directo</li>
-                    <li><span>Riego</span> Medio, más frecuente en verano</li>
+                    <li><span>Luz</span> Luz media; ni sombra profunda ni sol directo</li>
+                    <li><span>Riego</span> Medio, aumentando la frecuencia en verano</li>
                     <li><span>Origen</span> Sudáfrica</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Herbáceas</li>
+              <li>De interior</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Para balcones y terrazas</li>
+              <li>Media sombra</li>
+              <li>Sombra</li>
+              <li>Follaje decorativo</li>
+              <li>Colgantes</li>
+              <li>Cubresuelos</li>
+              <li>Bajo mantenimiento</li>
+              <li>Seguras para mascotas</li>
                   </ul>
                 </div>
                 <a class="boton boton-pdf" href="info/cinta.pdf" download>
@@ -192,32 +346,76 @@
                 </a>
               </article>
 
+              <article class="card c-helechos c-interior c-maceta c-sombra c-media-sombra c-tropicales c-follaje c-colgantes c-riego-frecuente c-pet-safe">
+                <h4 class="card-nombre">Helecho serrucho</h4>
+                <img class="card-img" src="imágenes/helecho-serrucho.jpg" loading="lazy"
+                     alt="Frondes arqueadas y aserradas de helecho serrucho">
+                <div class="card-info">
+                  <p class="card-cientifico">Nephrolepis exaltata</p>
+                  <p class="card-texto">El helecho de interior por excelencia: frondes arqueadas de un verde fresco que caen desde una maceta colgante. Pide sombra, humedad y nada de sol directo.</p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Sombra o media sombra; el sol directo lo quema</li>
+                    <li><span>Riego</span> Frecuente: el sustrato nunca debe secarse por completo</li>
+                    <li><span>Origen</span> Bosques húmedos y pantanos de las regiones tropicales de todo el mundo</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Helechos</li>
+              <li>De interior</li>
+              <li>Aptas para maceta</li>
+              <li>Sombra</li>
+              <li>Media sombra</li>
+              <li>Tropicales</li>
+              <li>Follaje decorativo</li>
+              <li>Colgantes</li>
+              <li>Riego frecuente</li>
+              <li>Seguras para mascotas</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/helecho-serrucho.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
             </div>
           </section>
 
-          <!-- ---------------- PLANTAS DE EXTERIOR ---------------- -->
           <section class="grupo grupo-exterior" id="plantas-exterior">
             <header class="grupo-titulo">
               <h3>Plantas de exterior</h3>
-              <p>Están en el cantero y en macetas al sol, aguantando lluvia, viento y heladas.</p>
+              <p>Las del cantero, el balcón y la huerta, a la intemperie todo el año.</p>
             </header>
 
             <div class="grilla">
 
-              <article class="card">
+              <article class="card c-arbustos c-exterior c-maceta c-balcon c-sol c-sequia c-rusticas c-florales c-perfumadas c-aromaticas c-medicinales c-cercos c-bajo-mantenimiento c-polinizadores">
                 <h4 class="card-nombre">Lavanda</h4>
                 <img class="card-img" src="imágenes/lavanda.jpg" loading="lazy"
                      alt="Hileras de lavanda en flor con espigas violetas">
                 <div class="card-info">
                   <p class="card-cientifico">Lavandula angustifolia</p>
-                  <p class="card-texto">
-                    Mata mediterránea de follaje grisáceo y espigas violetas muy perfumadas. Quiere
-                    sol, poca agua y tierra suelta; a cambio, llena el jardín de abejas y aroma.
-                  </p>
+                  <p class="card-texto">Mata mediterránea de follaje grisáceo y espigas violetas muy perfumadas. Quiere sol, poca agua y tierra suelta; a cambio, llena el jardín de abejas y aroma.</p>
                   <ul class="card-datos">
-                    <li><span>Luz</span> Pleno sol, 6 a 8 horas diarias</li>
+                    <li><span>Luz</span> Pleno sol, 6-8 horas diarias de luz directa</li>
                     <li><span>Riego</span> Escaso; resiste muy bien la sequía</li>
                     <li><span>Origen</span> Región mediterránea</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Arbustos</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Para balcones y terrazas</li>
+              <li>Pleno sol</li>
+              <li>Resistentes a la sequía</li>
+              <li>Rústicas al frío</li>
+              <li>Florales</li>
+              <li>De flores perfumadas</li>
+              <li>Aromáticas</li>
+              <li>Medicinales</li>
+              <li>Cercos y borduras</li>
+              <li>Bajo mantenimiento</li>
+              <li>Atraen polinizadores</li>
                   </ul>
                 </div>
                 <a class="boton boton-pdf" href="info/lavanda.pdf" download>
@@ -225,20 +423,34 @@
                 </a>
               </article>
 
-              <article class="card">
+              <article class="card c-arbustos c-exterior c-maceta c-balcon c-sol c-sequia c-rusticas c-aromaticas c-medicinales c-comestibles c-cercos c-bajo-mantenimiento c-polinizadores c-pet-safe">
                 <h4 class="card-nombre">Romero</h4>
                 <img class="card-img" src="imágenes/romero.jpg" loading="lazy"
                      alt="Mata de romero en flor con pequeñas flores azul violeta">
                 <div class="card-info">
-                  <p class="card-cientifico">Salvia rosmarinus</p>
-                  <p class="card-texto">
-                    Arbusto aromático de hoja perenne y flores azul violeta. La planta más agradecida
-                    de un cantero seco: mucho sol, poca agua y un corte ligero cada tanto.
-                  </p>
+                  <p class="card-cientifico">Salvia rosmarinus (antes Rosmarinus officinalis)</p>
+                  <p class="card-texto">Arbusto aromático de hoja perenne y flores azul violeta. Es la planta más agradecida de un cantero seco: mucho sol, poca agua y un corte ligero cada tanto.</p>
                   <ul class="card-datos">
-                    <li><span>Luz</span> Pleno sol todo el año</li>
-                    <li><span>Riego</span> Muy escaso una vez arraigado</li>
+                    <li><span>Luz</span> Pleno sol durante todo el año</li>
+                    <li><span>Riego</span> Muy escaso; tolera la sequía prolongada</li>
                     <li><span>Origen</span> Región mediterránea</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Arbustos</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Para balcones y terrazas</li>
+              <li>Pleno sol</li>
+              <li>Resistentes a la sequía</li>
+              <li>Rústicas al frío</li>
+              <li>Aromáticas</li>
+              <li>Medicinales</li>
+              <li>Huerta y comestibles</li>
+              <li>Cercos y borduras</li>
+              <li>Bajo mantenimiento</li>
+              <li>Atraen polinizadores</li>
+              <li>Seguras para mascotas</li>
                   </ul>
                 </div>
                 <a class="boton boton-pdf" href="info/romero.pdf" download>
@@ -246,20 +458,28 @@
                 </a>
               </article>
 
-              <article class="card">
+              <article class="card c-arbustos c-exterior c-maceta c-media-sombra c-rusticas c-florales c-cercos c-riego-frecuente">
                 <h4 class="card-nombre">Hortensia</h4>
                 <img class="card-img" src="imágenes/hortensia.jpg" loading="lazy"
                      alt="Hortensias con grandes cabezuelas de flores azules">
                 <div class="card-info">
                   <p class="card-cientifico">Hydrangea macrophylla</p>
-                  <p class="card-texto">
-                    Arbusto caducifolio de cabezuelas enormes. Su particularidad es que el color de
-                    las flores cambia según la acidez del suelo: azul en suelo ácido, rosa si no lo es.
-                  </p>
+                  <p class="card-texto">Arbusto caducifolio de flores enormes agrupadas en cabezuelas. Su gran particularidad es que el color de las flores cambia según la acidez del suelo.</p>
                   <ul class="card-datos">
-                    <li><span>Luz</span> Semisombra, con sol suave de mañana</li>
-                    <li><span>Riego</span> Abundante, 3 o 4 veces por semana en verano</li>
-                    <li><span>Origen</span> Japón</li>
+                    <li><span>Luz</span> Semisombra: sol suave de mañana y sombra a la tarde</li>
+                    <li><span>Riego</span> Abundante: 3-4 veces por semana en verano, sin encharcar</li>
+                    <li><span>Origen</span> Japón; ampliamente cultivada en Europa y América</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Arbustos</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Media sombra</li>
+              <li>Rústicas al frío</li>
+              <li>Florales</li>
+              <li>Cercos y borduras</li>
+              <li>Riego frecuente</li>
                   </ul>
                 </div>
                 <a class="boton boton-pdf" href="info/hortensia.pdf" download>
@@ -267,23 +487,281 @@
                 </a>
               </article>
 
-              <article class="card">
+              <article class="card c-trepadoras c-exterior c-maceta c-sol c-media-sombra c-florales c-perfumadas c-medicinales c-cercos c-polinizadores">
                 <h4 class="card-nombre">Jazmín común</h4>
                 <img class="card-img" src="imágenes/jazmin.jpg" loading="lazy"
                      alt="Flores blancas de jazmín común sobre su follaje compuesto">
                 <div class="card-info">
                   <p class="card-cientifico">Jasminum officinale</p>
-                  <p class="card-texto">
-                    Trepadora de flores blancas estrelladas y perfume intenso al atardecer. Cubre
-                    muros, rejas y pérgolas en pocas temporadas.
-                  </p>
+                  <p class="card-texto">Trepadora de flores blancas estrelladas y perfume intenso al atardecer. Cubre muros, rejas y pérgolas en pocas temporadas.</p>
                   <ul class="card-datos">
-                    <li><span>Luz</span> Sol o semisombra</li>
-                    <li><span>Riego</span> Regular en primavera y verano</li>
-                    <li><span>Origen</span> Del Cáucaso al oeste de China</li>
+                    <li><span>Luz</span> Sol o semisombra, resguardado de los vientos fríos</li>
+                    <li><span>Riego</span> Regular en primavera y verano; moderado el resto del año</li>
+                    <li><span>Origen</span> Cáucaso, Irán, Afganistán, Himalaya, India, Nepal y China occidental</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Trepadoras</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Pleno sol</li>
+              <li>Media sombra</li>
+              <li>Florales</li>
+              <li>De flores perfumadas</li>
+              <li>Medicinales</li>
+              <li>Cercos y borduras</li>
+              <li>Atraen polinizadores</li>
                   </ul>
                 </div>
                 <a class="boton boton-pdf" href="info/jazmin.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card c-suculentas c-interior c-exterior c-maceta c-balcon c-sol c-media-sombra c-sequia c-medicinales c-bajo-mantenimiento">
+                <h4 class="card-nombre">Aloe vera</h4>
+                <img class="card-img" src="imágenes/aloe-vera.jpg" loading="lazy"
+                     alt="Planta de aloe vera con hojas carnosas y dentadas en una maceta">
+                <div class="card-info">
+                  <p class="card-cientifico">Aloe vera</p>
+                  <p class="card-texto">Suculenta de hojas carnosas y dentadas, también llamada sábila. Guarda en su interior el gel medicinal más conocido del mundo y se olvida del riego sin quejarse.</p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Pleno sol o media sombra muy luminosa</li>
+                    <li><span>Riego</span> Muy escaso: dejar secar el sustrato por completo</li>
+                    <li><span>Origen</span> Península arábiga (montañas Al Hajar); naturalizada en zonas áridas de todo el mundo</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Suculentas y cactus</li>
+              <li>De interior</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Para balcones y terrazas</li>
+              <li>Pleno sol</li>
+              <li>Media sombra</li>
+              <li>Resistentes a la sequía</li>
+              <li>Medicinales</li>
+              <li>Bajo mantenimiento</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/aloe-vera.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card c-herbaceas c-exterior c-maceta c-balcon c-sol c-comestibles c-aromaticas c-riego-frecuente c-polinizadores c-pet-safe">
+                <h4 class="card-nombre">Albahaca</h4>
+                <img class="card-img" src="imágenes/albahaca.jpg" loading="lazy"
+                     alt="Mata de albahaca creciendo en una jardinera de piedra al sol">
+                <div class="card-info">
+                  <p class="card-cientifico">Ocimum basilicum</p>
+                  <p class="card-texto">La aromática de la huerta por excelencia. Anual y de crecimiento rápido: una maceta al sol da hojas para pesto y ensaladas todo el verano.</p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Pleno sol: al menos 5 o 6 horas diarias</li>
+                    <li><span>Riego</span> Frecuente y parejo; no tolera quedarse seca</li>
+                    <li><span>Origen</span> Regiones tropicales de África central y el sudeste asiático</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Herbáceas</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Para balcones y terrazas</li>
+              <li>Pleno sol</li>
+              <li>Huerta y comestibles</li>
+              <li>Aromáticas</li>
+              <li>Riego frecuente</li>
+              <li>Atraen polinizadores</li>
+              <li>Seguras para mascotas</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/albahaca.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card c-herbaceas c-exterior c-maceta c-balcon c-media-sombra c-comestibles c-aromaticas c-medicinales c-cubresuelos c-riego-frecuente">
+                <h4 class="card-nombre">Menta</h4>
+                <img class="card-img" src="imágenes/menta.jpg" loading="lazy"
+                     alt="Tallos de menta piperita con hojas dentadas de color verde oscuro">
+                <div class="card-info">
+                  <p class="card-cientifico">Mentha × piperita</p>
+                  <p class="card-texto">Aromática imparable: en media sombra y con humedad se expande sola por rizomas. Por eso se planta en maceta, salvo que se quiera tapizar un rincón entero.</p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Media sombra; tolera sol suave si no le falta agua</li>
+                    <li><span>Riego</span> Frecuente: el suelo debe mantenerse siempre fresco</li>
+                    <li><span>Origen</span> Híbrido europeo de Mentha aquatica y Mentha spicata</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Herbáceas</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Para balcones y terrazas</li>
+              <li>Media sombra</li>
+              <li>Huerta y comestibles</li>
+              <li>Aromáticas</li>
+              <li>Medicinales</li>
+              <li>Cubresuelos</li>
+              <li>Riego frecuente</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/menta.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card c-arboles c-exterior c-maceta c-balcon c-sol c-florales c-perfumadas c-comestibles c-frutales c-riego-frecuente c-polinizadores">
+                <h4 class="card-nombre">Limonero</h4>
+                <img class="card-img" src="imágenes/limonero.jpg" loading="lazy"
+                     alt="Rama de limonero cargada de limones maduros contra el cielo">
+                <div class="card-info">
+                  <p class="card-cientifico">Citrus × limon</p>
+                  <p class="card-texto">El frutal más agradecido para un patio chico: en maceta grande da limones casi todo el año y, de paso, perfuma el jardín con sus azahares.</p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Pleno sol, resguardado de los vientos fríos</li>
+                    <li><span>Riego</span> Regular y abundante en verano, sin encharcar</li>
+                    <li><span>Origen</span> Híbrido de origen asiático, entre el cidro y el naranjo amargo</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Árboles</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Para balcones y terrazas</li>
+              <li>Pleno sol</li>
+              <li>Florales</li>
+              <li>De flores perfumadas</li>
+              <li>Huerta y comestibles</li>
+              <li>Frutales</li>
+              <li>Riego frecuente</li>
+              <li>Atraen polinizadores</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/limonero.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card c-trepadoras c-exterior c-maceta c-sol c-sequia c-nativas c-florales c-cercos c-bajo-mantenimiento">
+                <h4 class="card-nombre">Santa Rita</h4>
+                <img class="card-img" src="imágenes/santa-rita.jpg" loading="lazy"
+                     alt="Santa Rita con brácteas magenta y pequeñas flores blancas">
+                <div class="card-info">
+                  <p class="card-cientifico">Bougainvillea spectabilis</p>
+                  <p class="card-texto">La trepadora que pinta las medianeras de todo el país. Nativa de Sudamérica, quiere sol pleno y poca agua: cuanto peor la tratás, más florece.</p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Pleno sol, cuanto más mejor</li>
+                    <li><span>Riego</span> Escaso: florece más si pasa un poco de sed</li>
+                    <li><span>Origen</span> Bosques tropicales de Sudamérica: Brasil, Perú, Paraguay, Bolivia y el norte argentino</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Trepadoras</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Pleno sol</li>
+              <li>Resistentes a la sequía</li>
+              <li>Nativas de Sudamérica</li>
+              <li>Florales</li>
+              <li>Cercos y borduras</li>
+              <li>Bajo mantenimiento</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/santa-rita.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card c-arbustos c-exterior c-maceta c-sol c-media-sombra c-nativas c-florales c-perfumadas c-cercos c-polinizadores">
+                <h4 class="card-nombre">Jazmín del Paraguay</h4>
+                <img class="card-img" src="imágenes/jazmin-del-paraguay.jpg" loading="lazy"
+                     alt="Arbusto de jazmín del Paraguay con flores blancas y violetas">
+                <div class="card-info">
+                  <p class="card-cientifico">Brunfelsia australis</p>
+                  <p class="card-texto">Arbusto nativo del nordeste argentino, también llamado diamelo. En plena floración tiene flores violetas, lilas y blancas al mismo tiempo, con un perfume dulce.</p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Sol suave o media sombra</li>
+                    <li><span>Riego</span> Regular en primavera y verano; moderado en invierno</li>
+                    <li><span>Origen</span> Nordeste argentino, Paraguay, sur de Brasil y Bolivia</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Arbustos</li>
+              <li>De exterior</li>
+              <li>Aptas para maceta</li>
+              <li>Pleno sol</li>
+              <li>Media sombra</li>
+              <li>Nativas de Sudamérica</li>
+              <li>Florales</li>
+              <li>De flores perfumadas</li>
+              <li>Cercos y borduras</li>
+              <li>Atraen polinizadores</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/jazmin-del-paraguay.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card c-gramineas c-exterior c-sol c-sequia c-rusticas c-nativas c-follaje c-cercos c-bajo-mantenimiento">
+                <h4 class="card-nombre">Cortadera</h4>
+                <img class="card-img" src="imágenes/cortadera.jpg" loading="lazy"
+                     alt="Penachos plateados de cortadera recortados contra el cielo azul">
+                <div class="card-info">
+                  <p class="card-cientifico">Cortaderia selloana</p>
+                  <p class="card-texto">La gramínea de la pampa: mata enorme de hojas finas y plumeros plateados que se mueven con el viento. Nativa, rústica y prácticamente inmortal.</p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Pleno sol</li>
+                    <li><span>Riego</span> Muy escaso una vez arraigada</li>
+                    <li><span>Origen</span> Sur de Sudamérica: región pampeana y Patagonia</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Gramíneas</li>
+              <li>De exterior</li>
+              <li>Pleno sol</li>
+              <li>Resistentes a la sequía</li>
+              <li>Rústicas al frío</li>
+              <li>Nativas de Sudamérica</li>
+              <li>Follaje decorativo</li>
+              <li>Cercos y borduras</li>
+              <li>Bajo mantenimiento</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/cortadera.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card c-trepadoras c-exterior c-interior c-maceta c-sombra c-media-sombra c-rusticas c-follaje c-colgantes c-cubresuelos c-bajo-mantenimiento">
+                <h4 class="card-nombre">Hiedra</h4>
+                <img class="card-img" src="imágenes/hiedra.jpg" loading="lazy"
+                     alt="Hiedra cubriendo un muro, con sus hojas lobuladas al sol">
+                <div class="card-info">
+                  <p class="card-cientifico">Hedera helix</p>
+                  <p class="card-texto">La solución para los rincones oscuros: tapiza el suelo, cubre un muro o cuelga de una maceta, y sobrevive donde casi nada prospera.</p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Sombra y media sombra; el sol fuerte le quema las hojas</li>
+                    <li><span>Riego</span> Moderado, sin dejar que el suelo se seque del todo</li>
+                    <li><span>Origen</span> Bosques húmedos de Europa, norte de África y Asia</li>
+                  </ul>
+                  <p class="card-etiquetas-titulo">Categorías</p>
+                  <ul class="card-etiquetas">
+              <li>Trepadoras</li>
+              <li>De exterior</li>
+              <li>De interior</li>
+              <li>Aptas para maceta</li>
+              <li>Sombra</li>
+              <li>Media sombra</li>
+              <li>Rústicas al frío</li>
+              <li>Follaje decorativo</li>
+              <li>Colgantes</li>
+              <li>Cubresuelos</li>
+              <li>Bajo mantenimiento</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/hiedra.pdf" download>
                   <span>Descargar ficha en PDF</span>
                 </a>
               </article>
@@ -293,6 +771,7 @@
 
         </div><!-- /catalogo -->
       </div><!-- /filtro-bloque -->
+      <!-- CATALOGO:FIN -->
     </div>
   </section>
 

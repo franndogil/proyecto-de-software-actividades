@@ -274,9 +274,10 @@ label:focus-visible {
 .seccion-oscura .seccion-intro { color: #b7cdb1; }
 
 /* ------------------------ 6. FILTRO DE CATEGORÍAS ------------------------ */
-/* Los tres radios quedan ocultos; cada opción de la lista es un <label>
-   que marca el suyo. Con el radio marcado, el CSS muestra u oculta cada
-   grupo de plantas. Todo estático, sin scripts. */
+/* Hay un radio oculto por cada categoría de la taxonomía y cada opción de
+   la lista desplegable es un label que marca el suyo. Con el radio
+   marcado, el CSS oculta las tarjetas que no pertenecen a esa categoría
+   (ver el bloque generado del punto 11). Todo estático, sin scripts. */
 .filtro-radio {
   position: absolute;
   width: 1px; height: 1px;
@@ -329,21 +330,42 @@ label:focus-visible {
 /* En el botón se muestra solo el texto de la categoría elegida. */
 .valor { display: none; }
 
-#cat-todas:checked    ~ .filtro .valor-todas,
-#cat-interior:checked ~ .filtro .valor-interior,
-#cat-exterior:checked ~ .filtro .valor-exterior { display: inline; }
-
 .filtro-opciones {
   position: absolute;
   z-index: 20;
   left: 0; right: 0;
   margin: 5px 0 0;
   padding: 6px;
-  list-style: none;
+  max-height: 60vh;
+  overflow-y: auto;
   background: #fff;
   border: 3px solid var(--verde-700);
   border-radius: var(--radio);
   box-shadow: 0 12px 26px rgba(20, 48, 28, .18);
+}
+
+.filtro-lista { margin: 0; padding: 0; list-style: none; }
+
+/* Título de cada eje de la taxonomía dentro del desplegable */
+.filtro-eje {
+  margin: 4px 0 2px;
+  padding: 12px 12px 6px;
+  border-top: 1px solid var(--borde);
+  color: var(--verde-700);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.filtro-eje span {
+  display: block;
+  margin-top: 3px;
+  color: var(--gris);
+  font-size: .75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .filtro-opciones label {
@@ -358,6 +380,20 @@ label:focus-visible {
 
 .filtro-opciones label:hover { background: var(--verde-50); }
 
+/* Subcategorías (flores perfumadas dentro de florales, frutales
+   dentro de huerta y comestibles) */
+.opcion-sub label { padding-left: 26px; font-size: .93rem; }
+
+.opcion-sub label::before {
+  content: "";
+  position: absolute;
+  margin-left: -14px;
+  margin-top: 10px;
+  width: 8px;
+  height: 1px;
+  background: var(--verde-300);
+}
+
 .cantidad {
   padding: 1px 9px;
   background: var(--verde-100);
@@ -366,21 +402,11 @@ label:focus-visible {
   font-weight: 700;
 }
 
-#cat-todas:checked    ~ .filtro label[for="cat-todas"],
-#cat-interior:checked ~ .filtro label[for="cat-interior"],
-#cat-exterior:checked ~ .filtro label[for="cat-exterior"] {
-  background: var(--verde-50);
-  border-left-color: var(--verde-500);
-  font-weight: 700;
-}
-
-/* El filtro propiamente dicho */
-#cat-interior:checked ~ .catalogo .grupo-exterior,
-#cat-exterior:checked ~ .catalogo .grupo-interior { display: none; }
-
-/* Si se llega desde la navbar a un grupo filtrado, el enlace manda:
-   :target vuelve a mostrarlo para que nunca se llegue a una sección vacía. */
+/* Si se llega desde la navbar a un bloque filtrado, el enlace manda:
+   :target vuelve a mostrarlo entero para que nunca se llegue a una
+   sección vacía, sin importar qué categoría esté elegida. */
 .grupo:target { display: block !important; }
+.grupo:target .card { display: flex !important; }
 
 /* -------------------- 7. GRUPOS Y TARJETAS DE PLANTAS -------------------- */
 .grupo { margin-top: 34px; scroll-margin-top: 24px; }
@@ -462,6 +488,36 @@ label:focus-visible {
   font-weight: 700;
   letter-spacing: .11em;
   text-transform: uppercase;
+}
+
+/* Etiquetas: todas las categorías de la taxonomía a las que pertenece
+   la planta. Dejan a la vista que una misma planta entra en varias. */
+.card-etiquetas-titulo {
+  margin: 16px 0 7px;
+  color: var(--verde-600);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.card-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.card-etiquetas li {
+  padding: 2px 8px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--verde-50);
+  color: var(--verde-800);
+  font-size: .7rem;
+  line-height: 1.5;
 }
 
 /* ---------------------------- 8. FORMULARIO ------------------------------ */
@@ -551,6 +607,163 @@ label:focus-visible {
 
 .pie-links a { color: var(--verde-300); font-size: .9rem; text-decoration: none; }
 .pie-links a:hover { color: #fff; text-decoration: underline; }
+
+/* FILTRO:INICIO */
+/* ===== BLOQUE GENERADO: una regla por categoría de la taxonomía =====
+   Se arma con gen-catalogo.js a partir de datos.js. Es CSS común y
+   corriente: no hay scripts de ningún tipo en el sitio. */
+
+/* Nombre de la categoría elegida, dentro del botón del desplegable */
+#f-todas:checked ~ .filtro .valor-todas,
+#f-herbaceas:checked ~ .filtro .valor-herbaceas,
+#f-arbustos:checked ~ .filtro .valor-arbustos,
+#f-arboles:checked ~ .filtro .valor-arboles,
+#f-trepadoras:checked ~ .filtro .valor-trepadoras,
+#f-suculentas:checked ~ .filtro .valor-suculentas,
+#f-helechos:checked ~ .filtro .valor-helechos,
+#f-gramineas:checked ~ .filtro .valor-gramineas,
+#f-interior:checked ~ .filtro .valor-interior,
+#f-exterior:checked ~ .filtro .valor-exterior,
+#f-maceta:checked ~ .filtro .valor-maceta,
+#f-balcon:checked ~ .filtro .valor-balcon,
+#f-sol:checked ~ .filtro .valor-sol,
+#f-media-sombra:checked ~ .filtro .valor-media-sombra,
+#f-sombra:checked ~ .filtro .valor-sombra,
+#f-tropicales:checked ~ .filtro .valor-tropicales,
+#f-rusticas:checked ~ .filtro .valor-rusticas,
+#f-sequia:checked ~ .filtro .valor-sequia,
+#f-nativas:checked ~ .filtro .valor-nativas,
+#f-florales:checked ~ .filtro .valor-florales,
+#f-perfumadas:checked ~ .filtro .valor-perfumadas,
+#f-follaje:checked ~ .filtro .valor-follaje,
+#f-aromaticas:checked ~ .filtro .valor-aromaticas,
+#f-medicinales:checked ~ .filtro .valor-medicinales,
+#f-comestibles:checked ~ .filtro .valor-comestibles,
+#f-frutales:checked ~ .filtro .valor-frutales,
+#f-cercos:checked ~ .filtro .valor-cercos,
+#f-cubresuelos:checked ~ .filtro .valor-cubresuelos,
+#f-colgantes:checked ~ .filtro .valor-colgantes,
+#f-bajo-mantenimiento:checked ~ .filtro .valor-bajo-mantenimiento,
+#f-riego-frecuente:checked ~ .filtro .valor-riego-frecuente,
+#f-pet-safe:checked ~ .filtro .valor-pet-safe,
+#f-polinizadores:checked ~ .filtro .valor-polinizadores {
+  display: inline;
+}
+
+/* Opción marcada dentro de la lista desplegable */
+#f-todas:checked ~ .filtro label[for="f-todas"],
+#f-herbaceas:checked ~ .filtro label[for="f-herbaceas"],
+#f-arbustos:checked ~ .filtro label[for="f-arbustos"],
+#f-arboles:checked ~ .filtro label[for="f-arboles"],
+#f-trepadoras:checked ~ .filtro label[for="f-trepadoras"],
+#f-suculentas:checked ~ .filtro label[for="f-suculentas"],
+#f-helechos:checked ~ .filtro label[for="f-helechos"],
+#f-gramineas:checked ~ .filtro label[for="f-gramineas"],
+#f-interior:checked ~ .filtro label[for="f-interior"],
+#f-exterior:checked ~ .filtro label[for="f-exterior"],
+#f-maceta:checked ~ .filtro label[for="f-maceta"],
+#f-balcon:checked ~ .filtro label[for="f-balcon"],
+#f-sol:checked ~ .filtro label[for="f-sol"],
+#f-media-sombra:checked ~ .filtro label[for="f-media-sombra"],
+#f-sombra:checked ~ .filtro label[for="f-sombra"],
+#f-tropicales:checked ~ .filtro label[for="f-tropicales"],
+#f-rusticas:checked ~ .filtro label[for="f-rusticas"],
+#f-sequia:checked ~ .filtro label[for="f-sequia"],
+#f-nativas:checked ~ .filtro label[for="f-nativas"],
+#f-florales:checked ~ .filtro label[for="f-florales"],
+#f-perfumadas:checked ~ .filtro label[for="f-perfumadas"],
+#f-follaje:checked ~ .filtro label[for="f-follaje"],
+#f-aromaticas:checked ~ .filtro label[for="f-aromaticas"],
+#f-medicinales:checked ~ .filtro label[for="f-medicinales"],
+#f-comestibles:checked ~ .filtro label[for="f-comestibles"],
+#f-frutales:checked ~ .filtro label[for="f-frutales"],
+#f-cercos:checked ~ .filtro label[for="f-cercos"],
+#f-cubresuelos:checked ~ .filtro label[for="f-cubresuelos"],
+#f-colgantes:checked ~ .filtro label[for="f-colgantes"],
+#f-bajo-mantenimiento:checked ~ .filtro label[for="f-bajo-mantenimiento"],
+#f-riego-frecuente:checked ~ .filtro label[for="f-riego-frecuente"],
+#f-pet-safe:checked ~ .filtro label[for="f-pet-safe"],
+#f-polinizadores:checked ~ .filtro label[for="f-polinizadores"] {
+  background: var(--verde-50);
+  border-left-color: var(--verde-500);
+  font-weight: 700;
+}
+
+/* Filtrado: se ocultan las tarjetas que no pertenecen a la categoría */
+#f-herbaceas:checked ~ .catalogo .card:not(.c-herbaceas),
+#f-arbustos:checked ~ .catalogo .card:not(.c-arbustos),
+#f-arboles:checked ~ .catalogo .card:not(.c-arboles),
+#f-trepadoras:checked ~ .catalogo .card:not(.c-trepadoras),
+#f-suculentas:checked ~ .catalogo .card:not(.c-suculentas),
+#f-helechos:checked ~ .catalogo .card:not(.c-helechos),
+#f-gramineas:checked ~ .catalogo .card:not(.c-gramineas),
+#f-interior:checked ~ .catalogo .card:not(.c-interior),
+#f-exterior:checked ~ .catalogo .card:not(.c-exterior),
+#f-maceta:checked ~ .catalogo .card:not(.c-maceta),
+#f-balcon:checked ~ .catalogo .card:not(.c-balcon),
+#f-sol:checked ~ .catalogo .card:not(.c-sol),
+#f-media-sombra:checked ~ .catalogo .card:not(.c-media-sombra),
+#f-sombra:checked ~ .catalogo .card:not(.c-sombra),
+#f-tropicales:checked ~ .catalogo .card:not(.c-tropicales),
+#f-rusticas:checked ~ .catalogo .card:not(.c-rusticas),
+#f-sequia:checked ~ .catalogo .card:not(.c-sequia),
+#f-nativas:checked ~ .catalogo .card:not(.c-nativas),
+#f-florales:checked ~ .catalogo .card:not(.c-florales),
+#f-perfumadas:checked ~ .catalogo .card:not(.c-perfumadas),
+#f-follaje:checked ~ .catalogo .card:not(.c-follaje),
+#f-aromaticas:checked ~ .catalogo .card:not(.c-aromaticas),
+#f-medicinales:checked ~ .catalogo .card:not(.c-medicinales),
+#f-comestibles:checked ~ .catalogo .card:not(.c-comestibles),
+#f-frutales:checked ~ .catalogo .card:not(.c-frutales),
+#f-cercos:checked ~ .catalogo .card:not(.c-cercos),
+#f-cubresuelos:checked ~ .catalogo .card:not(.c-cubresuelos),
+#f-colgantes:checked ~ .catalogo .card:not(.c-colgantes),
+#f-bajo-mantenimiento:checked ~ .catalogo .card:not(.c-bajo-mantenimiento),
+#f-riego-frecuente:checked ~ .catalogo .card:not(.c-riego-frecuente),
+#f-pet-safe:checked ~ .catalogo .card:not(.c-pet-safe),
+#f-polinizadores:checked ~ .catalogo .card:not(.c-polinizadores) {
+  display: none;
+}
+
+/* Y se oculta el bloque (interior o exterior) que quede sin tarjetas.
+   Si el navegador no soporta :has(), lo único que pasa es que puede
+   verse un título de bloque sin tarjetas debajo. */
+#f-herbaceas:checked ~ .catalogo .grupo:not(:has(.c-herbaceas)),
+#f-arbustos:checked ~ .catalogo .grupo:not(:has(.c-arbustos)),
+#f-arboles:checked ~ .catalogo .grupo:not(:has(.c-arboles)),
+#f-trepadoras:checked ~ .catalogo .grupo:not(:has(.c-trepadoras)),
+#f-suculentas:checked ~ .catalogo .grupo:not(:has(.c-suculentas)),
+#f-helechos:checked ~ .catalogo .grupo:not(:has(.c-helechos)),
+#f-gramineas:checked ~ .catalogo .grupo:not(:has(.c-gramineas)),
+#f-interior:checked ~ .catalogo .grupo:not(:has(.c-interior)),
+#f-exterior:checked ~ .catalogo .grupo:not(:has(.c-exterior)),
+#f-maceta:checked ~ .catalogo .grupo:not(:has(.c-maceta)),
+#f-balcon:checked ~ .catalogo .grupo:not(:has(.c-balcon)),
+#f-sol:checked ~ .catalogo .grupo:not(:has(.c-sol)),
+#f-media-sombra:checked ~ .catalogo .grupo:not(:has(.c-media-sombra)),
+#f-sombra:checked ~ .catalogo .grupo:not(:has(.c-sombra)),
+#f-tropicales:checked ~ .catalogo .grupo:not(:has(.c-tropicales)),
+#f-rusticas:checked ~ .catalogo .grupo:not(:has(.c-rusticas)),
+#f-sequia:checked ~ .catalogo .grupo:not(:has(.c-sequia)),
+#f-nativas:checked ~ .catalogo .grupo:not(:has(.c-nativas)),
+#f-florales:checked ~ .catalogo .grupo:not(:has(.c-florales)),
+#f-perfumadas:checked ~ .catalogo .grupo:not(:has(.c-perfumadas)),
+#f-follaje:checked ~ .catalogo .grupo:not(:has(.c-follaje)),
+#f-aromaticas:checked ~ .catalogo .grupo:not(:has(.c-aromaticas)),
+#f-medicinales:checked ~ .catalogo .grupo:not(:has(.c-medicinales)),
+#f-comestibles:checked ~ .catalogo .grupo:not(:has(.c-comestibles)),
+#f-frutales:checked ~ .catalogo .grupo:not(:has(.c-frutales)),
+#f-cercos:checked ~ .catalogo .grupo:not(:has(.c-cercos)),
+#f-cubresuelos:checked ~ .catalogo .grupo:not(:has(.c-cubresuelos)),
+#f-colgantes:checked ~ .catalogo .grupo:not(:has(.c-colgantes)),
+#f-bajo-mantenimiento:checked ~ .catalogo .grupo:not(:has(.c-bajo-mantenimiento)),
+#f-riego-frecuente:checked ~ .catalogo .grupo:not(:has(.c-riego-frecuente)),
+#f-pet-safe:checked ~ .catalogo .grupo:not(:has(.c-pet-safe)),
+#f-polinizadores:checked ~ .catalogo .grupo:not(:has(.c-polinizadores)) {
+  display: none;
+}
+
+/* FILTRO:FIN */
 
 /* ----------------------------- 11. RESPONSIVE ---------------------------- */
 @media (min-width: 560px) {

@@ -253,6 +253,7 @@ a {
 
 .desplegable {
   position: relative;
+  width: min(100%, 360px);
 }
 
 .desplegable summary {
@@ -271,9 +272,33 @@ a {
   color: var(--marfil);
 }
 
+.opciones-categoria {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 3px solid var(--borde);
+  border-radius: 4px;
+  background: var(--marfil);
+  box-shadow: 6px 6px 0 var(--sombra);
+}
+
+.grupo-opcion {
+  display: block;
+  margin: 10px 0 0;
+  color: var(--tierra);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.grupo-opcion:first-child {
+  margin-top: 0;
+}
+
 .desplegable a {
   display: flex;
-  margin-top: 8px;
   background: var(--marfil);
   border-color: var(--borde);
   color: var(--verde-profundo);
@@ -285,6 +310,41 @@ a {
   color: var(--marfil);
 }
 
+.anclas-categorias {
+  position: relative;
+  height: 0;
+}
+
+.anclas-categorias span {
+  position: absolute;
+  top: -96px;
+}
+
+.taxonomia {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 34px;
+}
+
+.taxonomia article {
+  min-width: 0;
+  padding: 18px;
+  border-left: 4px solid var(--verde-medio);
+  background: #eef6e6;
+}
+
+.taxonomia h3 {
+  margin: 0 0 8px;
+  color: var(--verde-profundo);
+  font-size: 1rem;
+}
+
+.taxonomia p {
+  margin: 0;
+  font-size: 0.94rem;
+}
+
 .grupo-plantas {
   scroll-margin-top: 104px;
   margin-top: 38px;
@@ -293,6 +353,81 @@ a {
 .plantas:has(#plantas-interior:target) .grupo-exterior,
 .plantas:has(#plantas-exterior:target) .grupo-interior {
   display: none;
+}
+
+.plantas:has(#cat-balcones-terrazas:target) .card-planta,
+.plantas:has(#cat-macetas:target) .card-planta,
+.plantas:has(#cat-herbaceas:target) .card-planta,
+.plantas:has(#cat-arbustos:target) .card-planta,
+.plantas:has(#cat-arboles-frutales:target) .card-planta,
+.plantas:has(#cat-trepadoras:target) .card-planta,
+.plantas:has(#cat-colgantes:target) .card-planta,
+.plantas:has(#cat-suculentas:target) .card-planta,
+.plantas:has(#cat-helechos:target) .card-planta,
+.plantas:has(#cat-gramineas:target) .card-planta,
+.plantas:has(#cat-sol:target) .card-planta,
+.plantas:has(#cat-sombra:target) .card-planta,
+.plantas:has(#cat-tropicales:target) .card-planta,
+.plantas:has(#cat-sequia:target) .card-planta,
+.plantas:has(#cat-aromaticas:target) .card-planta,
+.plantas:has(#cat-medicinales:target) .card-planta,
+.plantas:has(#cat-huerta:target) .card-planta,
+.plantas:has(#cat-florales:target) .card-planta,
+.plantas:has(#cat-follaje:target) .card-planta,
+.plantas:has(#cat-cubresuelos:target) .card-planta,
+.plantas:has(#cat-borduras:target) .card-planta,
+.plantas:has(#cat-polinizadores:target) .card-planta,
+.plantas:has(#cat-bajo-mantenimiento:target) .card-planta,
+.plantas:has(#cat-balcones-terrazas:target) .grupo-plantas:not(:has(.cat-balcones-terrazas)),
+.plantas:has(#cat-macetas:target) .grupo-plantas:not(:has(.cat-macetas)),
+.plantas:has(#cat-herbaceas:target) .grupo-plantas:not(:has(.cat-herbaceas)),
+.plantas:has(#cat-arbustos:target) .grupo-plantas:not(:has(.cat-arbustos)),
+.plantas:has(#cat-arboles-frutales:target) .grupo-plantas:not(:has(.cat-arboles-frutales)),
+.plantas:has(#cat-trepadoras:target) .grupo-plantas:not(:has(.cat-trepadoras)),
+.plantas:has(#cat-colgantes:target) .grupo-plantas:not(:has(.cat-colgantes)),
+.plantas:has(#cat-suculentas:target) .grupo-plantas:not(:has(.cat-suculentas)),
+.plantas:has(#cat-helechos:target) .grupo-plantas:not(:has(.cat-helechos)),
+.plantas:has(#cat-gramineas:target) .grupo-plantas:not(:has(.cat-gramineas)),
+.plantas:has(#cat-sol:target) .grupo-plantas:not(:has(.cat-sol)),
+.plantas:has(#cat-sombra:target) .grupo-plantas:not(:has(.cat-sombra)),
+.plantas:has(#cat-tropicales:target) .grupo-plantas:not(:has(.cat-tropicales)),
+.plantas:has(#cat-sequia:target) .grupo-plantas:not(:has(.cat-sequia)),
+.plantas:has(#cat-aromaticas:target) .grupo-plantas:not(:has(.cat-aromaticas)),
+.plantas:has(#cat-medicinales:target) .grupo-plantas:not(:has(.cat-medicinales)),
+.plantas:has(#cat-huerta:target) .grupo-plantas:not(:has(.cat-huerta)),
+.plantas:has(#cat-florales:target) .grupo-plantas:not(:has(.cat-florales)),
+.plantas:has(#cat-follaje:target) .grupo-plantas:not(:has(.cat-follaje)),
+.plantas:has(#cat-cubresuelos:target) .grupo-plantas:not(:has(.cat-cubresuelos)),
+.plantas:has(#cat-borduras:target) .grupo-plantas:not(:has(.cat-borduras)),
+.plantas:has(#cat-polinizadores:target) .grupo-plantas:not(:has(.cat-polinizadores)),
+.plantas:has(#cat-bajo-mantenimiento:target) .grupo-plantas:not(:has(.cat-bajo-mantenimiento)) {
+  display: none;
+}
+
+.plantas:has(#cat-balcones-terrazas:target) .cat-balcones-terrazas,
+.plantas:has(#cat-macetas:target) .cat-macetas,
+.plantas:has(#cat-herbaceas:target) .cat-herbaceas,
+.plantas:has(#cat-arbustos:target) .cat-arbustos,
+.plantas:has(#cat-arboles-frutales:target) .cat-arboles-frutales,
+.plantas:has(#cat-trepadoras:target) .cat-trepadoras,
+.plantas:has(#cat-colgantes:target) .cat-colgantes,
+.plantas:has(#cat-suculentas:target) .cat-suculentas,
+.plantas:has(#cat-helechos:target) .cat-helechos,
+.plantas:has(#cat-gramineas:target) .cat-gramineas,
+.plantas:has(#cat-sol:target) .cat-sol,
+.plantas:has(#cat-sombra:target) .cat-sombra,
+.plantas:has(#cat-tropicales:target) .cat-tropicales,
+.plantas:has(#cat-sequia:target) .cat-sequia,
+.plantas:has(#cat-aromaticas:target) .cat-aromaticas,
+.plantas:has(#cat-medicinales:target) .cat-medicinales,
+.plantas:has(#cat-huerta:target) .cat-huerta,
+.plantas:has(#cat-florales:target) .cat-florales,
+.plantas:has(#cat-follaje:target) .cat-follaje,
+.plantas:has(#cat-cubresuelos:target) .cat-cubresuelos,
+.plantas:has(#cat-borduras:target) .cat-borduras,
+.plantas:has(#cat-polinizadores:target) .cat-polinizadores,
+.plantas:has(#cat-bajo-mantenimiento:target) .cat-bajo-mantenimiento {
+  display: flex;
 }
 
 .encabezado-grupo {
@@ -349,6 +484,27 @@ a {
 .info-planta p {
   margin: 0;
   flex: 1;
+}
+
+.chips-categorias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.chips-categorias span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 5px 9px;
+  border: 2px solid var(--verde-suave);
+  border-radius: 3px;
+  background: var(--papel);
+  color: var(--verde-profundo);
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.2;
 }
 
 .contacto {
@@ -440,6 +596,10 @@ a {
 }
 
 @media (max-width: 920px) {
+  .taxonomia {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .grid-plantas {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -508,6 +668,10 @@ a {
   .desplegable summary,
   .desplegable a {
     width: 100%;
+  }
+
+  .taxonomia {
+    grid-template-columns: 1fr;
   }
 }
 

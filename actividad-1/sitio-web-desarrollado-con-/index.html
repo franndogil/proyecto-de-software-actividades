@@ -30,7 +30,7 @@
       <div class="portada-contenido">
         <p class="etiqueta">Catálogo estático de jardín</p>
         <h1>Plantas que cultivo y quiero tener bien documentadas</h1>
-        <p>Una selección simple de plantas de interior y exterior, con imágenes locales y fichas PDF listas para descargar.</p>
+        <p>Una selección organizada por ubicación, tipo de planta, necesidades ambientales y usos reales de cultivo.</p>
         <div class="acciones">
           <a class="boton" href="#plantas">Ver plantas</a>
           <a class="boton boton-secundario" href="#contacto">Contacto</a>
@@ -43,17 +43,100 @@
         <div class="titulo-seccion">
           <p class="etiqueta">Plantas</p>
           <h2>Explorar por categoría</h2>
-          <p>Cada planta tiene una imagen local y una ficha descargable con cuidados principales.</p>
+          <p>Cada planta puede pertenecer a más de una categoría para que el catálogo sea fácil de recorrer y pueda crecer sin depender de una clasificación binaria.</p>
         </div>
 
         <div class="filtro-categorias">
           <span>Categoría</span>
           <details class="desplegable">
-            <summary>Seleccionar</summary>
-            <a href="#plantas">Todas</a>
-            <a href="#plantas-interior">Plantas de interior</a>
-            <a href="#plantas-exterior">Plantas de exterior</a>
+            <summary>Seleccionar categoría</summary>
+            <div class="opciones-categoria">
+              <span class="grupo-opcion">Ubicación</span>
+              <a href="#plantas">Todas</a>
+              <a href="#plantas-interior">Plantas de interior</a>
+              <a href="#plantas-exterior">Plantas de exterior</a>
+              <a href="#cat-balcones-terrazas">Balcones y terrazas</a>
+              <a href="#cat-macetas">Aptas para macetas</a>
+
+              <span class="grupo-opcion">Tipo y hábito</span>
+              <a href="#cat-herbaceas">Herbáceas perennes</a>
+              <a href="#cat-arbustos">Arbustos y subarbustos</a>
+              <a href="#cat-arboles-frutales">Árboles y frutales</a>
+              <a href="#cat-trepadoras">Trepadoras</a>
+              <a href="#cat-colgantes">Colgantes</a>
+              <a href="#cat-suculentas">Suculentas</a>
+              <a href="#cat-helechos">Helechos</a>
+              <a href="#cat-gramineas">Gramíneas ornamentales</a>
+
+              <span class="grupo-opcion">Luz y ambiente</span>
+              <a href="#cat-sol">Pleno sol</a>
+              <a href="#cat-sombra">Sombra y semisombra</a>
+              <a href="#cat-tropicales">Tropicales</a>
+              <a href="#cat-sequia">Resistentes a sequía</a>
+
+              <span class="grupo-opcion">Uso</span>
+              <a href="#cat-aromaticas">Aromáticas</a>
+              <a href="#cat-medicinales">Medicinales tradicionales</a>
+              <a href="#cat-huerta">Huerta y cocina</a>
+              <a href="#cat-florales">Florales</a>
+              <a href="#cat-follaje">Follaje ornamental</a>
+              <a href="#cat-cubresuelos">Cubresuelos</a>
+              <a href="#cat-borduras">Cercos o borduras</a>
+              <a href="#cat-polinizadores">Para polinizadores</a>
+
+              <span class="grupo-opcion">Mantenimiento</span>
+              <a href="#cat-bajo-mantenimiento">Bajo mantenimiento</a>
+            </div>
           </details>
+        </div>
+
+        <div class="anclas-categorias" aria-hidden="true">
+          <span id="cat-balcones-terrazas"></span>
+          <span id="cat-macetas"></span>
+          <span id="cat-herbaceas"></span>
+          <span id="cat-arbustos"></span>
+          <span id="cat-arboles-frutales"></span>
+          <span id="cat-trepadoras"></span>
+          <span id="cat-colgantes"></span>
+          <span id="cat-suculentas"></span>
+          <span id="cat-helechos"></span>
+          <span id="cat-gramineas"></span>
+          <span id="cat-sol"></span>
+          <span id="cat-sombra"></span>
+          <span id="cat-tropicales"></span>
+          <span id="cat-sequia"></span>
+          <span id="cat-aromaticas"></span>
+          <span id="cat-medicinales"></span>
+          <span id="cat-huerta"></span>
+          <span id="cat-florales"></span>
+          <span id="cat-follaje"></span>
+          <span id="cat-cubresuelos"></span>
+          <span id="cat-borduras"></span>
+          <span id="cat-polinizadores"></span>
+          <span id="cat-bajo-mantenimiento"></span>
+        </div>
+
+        <div class="taxonomia">
+          <article>
+            <h3>Ubicación</h3>
+            <p>Interior, exterior, balcones, terrazas y macetas.</p>
+          </article>
+          <article>
+            <h3>Tipo de planta</h3>
+            <p>Herbáceas, arbustos, trepadoras, colgantes, suculentas, helechos, gramíneas y frutales.</p>
+          </article>
+          <article>
+            <h3>Ambiente</h3>
+            <p>Pleno sol, sombra o semisombra, tropicales y resistentes a sequía.</p>
+          </article>
+          <article>
+            <h3>Uso</h3>
+            <p>Aromáticas, medicinales tradicionales, huerta, florales, cubresuelos, borduras y polinizadores.</p>
+          </article>
+          <article>
+            <h3>Mantenimiento</h3>
+            <p>Opciones de bajo mantenimiento y plantas con necesidades específicas.</p>
+          </article>
         </div>
 
         <section id="plantas-interior" class="grupo-plantas grupo-interior">
@@ -62,33 +145,201 @@
             <h2>Plantas de interior</h2>
           </div>
           <div class="grid-plantas">
-            <article class="card-planta">
+            <article class="card-planta cat-interior cat-herbaceas cat-trepadoras cat-sombra cat-tropicales cat-macetas cat-follaje">
               <h3>Monstera deliciosa</h3>
               <img src="imágenes/monstera.jpg" alt="Monstera deliciosa en maceta" loading="lazy">
               <div class="info-planta">
                 <h4>Información de la planta</h4>
                 <p>También conocida como costilla de Adán, es una trepadora tropical de hojas grandes y perforadas. Va bien en interiores con luz media a brillante indirecta y riego cuando el sustrato comienza a secarse.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Interior</span>
+                  <span>Tropical</span>
+                  <span>Trepadora</span>
+                  <span>Semisombra</span>
+                  <span>Maceta</span>
+                  <span>Follaje</span>
+                </div>
                 <a class="boton boton-descarga" href="info/monstera-deliciosa.pdf" download>Descargar PDF</a>
               </div>
             </article>
 
-            <article class="card-planta">
+            <article class="card-planta cat-interior cat-herbaceas cat-suculentas cat-sombra cat-tropicales cat-sequia cat-macetas cat-follaje cat-bajo-mantenimiento">
               <h3>Dracaena trifasciata</h3>
               <img src="imágenes/lengua-de-suegra.jpg" alt="Lengua de suegra con hojas verticales" loading="lazy">
               <div class="info-planta">
                 <h4>Información de la planta</h4>
                 <p>Conocida como lengua de suegra, tiene hojas rígidas y verticales. Tolera ambientes de poca luz, requiere muy poco riego y necesita un sustrato con buen drenaje para evitar pudrición de raíces.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Interior</span>
+                  <span>Suculenta</span>
+                  <span>Semisombra</span>
+                  <span>Sequía</span>
+                  <span>Maceta</span>
+                  <span>Bajo mantenimiento</span>
+                </div>
                 <a class="boton boton-descarga" href="info/lengua-de-suegra.pdf" download>Descargar PDF</a>
               </div>
             </article>
 
-            <article class="card-planta">
+            <article class="card-planta cat-interior cat-herbaceas cat-trepadoras cat-colgantes cat-sombra cat-tropicales cat-macetas cat-follaje cat-bajo-mantenimiento">
               <h3>Epipremnum aureum</h3>
               <img src="imágenes/pothos.jpg" alt="Pothos con hojas verdes y variegadas" loading="lazy">
               <div class="info-planta">
                 <h4>Información de la planta</h4>
                 <p>El pothos o potus es una planta colgante muy resistente. Prefiere luz indirecta, tolera sitios menos iluminados y se adapta bien a macetas, estantes o canastos colgantes.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Interior</span>
+                  <span>Tropical</span>
+                  <span>Trepadora</span>
+                  <span>Colgante</span>
+                  <span>Semisombra</span>
+                  <span>Bajo mantenimiento</span>
+                </div>
                 <a class="boton boton-descarga" href="info/pothos.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-interior cat-herbaceas cat-trepadoras cat-colgantes cat-sombra cat-tropicales cat-macetas cat-florales">
+              <h3>Hoya carnosa</h3>
+              <img src="imágenes/hoya.jpg" alt="Flores rosadas de Hoya carnosa" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>La hoya o flor de cera es una perenne tropical de hábito trepador y colgante. Prefiere luz brillante indirecta, macetas con buen drenaje y riegos espaciados.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Interior</span>
+                  <span>Tropical</span>
+                  <span>Trepadora</span>
+                  <span>Colgante</span>
+                  <span>Floral</span>
+                  <span>Maceta</span>
+                </div>
+                <a class="boton boton-descarga" href="info/hoya-carnosa.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-interior cat-herbaceas cat-colgantes cat-cubresuelos cat-sombra cat-tropicales cat-macetas cat-follaje cat-bajo-mantenimiento">
+              <h3>Tradescantia zebrina</h3>
+              <img src="imágenes/tradescantia.jpg" alt="Tradescantia zebrina con hojas verdes, plateadas y violetas" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>Planta rastrera o colgante de follaje variegado. Funciona bien en interiores luminosos, cestos colgantes, macetas y sectores de semisombra protegida.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Interior</span>
+                  <span>Colgante</span>
+                  <span>Cubresuelo</span>
+                  <span>Semisombra</span>
+                  <span>Follaje</span>
+                  <span>Bajo mantenimiento</span>
+                </div>
+                <a class="boton boton-descarga" href="info/tradescantia-zebrina.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-interior cat-colgantes cat-suculentas cat-sol cat-sequia cat-macetas cat-balcones-terrazas cat-bajo-mantenimiento">
+              <h3>Sedum morganianum</h3>
+              <img src="imágenes/sedum.jpg" alt="Sedum morganianum en maceta colgante" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>Conocido como cola de burro, es una suculenta de tallos colgantes y hojas carnosas. Necesita mucha luz, sustrato drenante y poco riego.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Suculenta</span>
+                  <span>Colgante</span>
+                  <span>Sol</span>
+                  <span>Sequía</span>
+                  <span>Maceta</span>
+                  <span>Bajo mantenimiento</span>
+                </div>
+                <a class="boton boton-descarga" href="info/sedum-morganianum.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-interior cat-herbaceas cat-suculentas cat-sol cat-sequia cat-medicinales cat-macetas cat-bajo-mantenimiento">
+              <h3>Aloe vera</h3>
+              <img src="imágenes/aloe.jpg" alt="Aloe vera en maceta" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>El aloe es una suculenta de roseta, muy usada en macetas. Se cultiva por su rusticidad, su forma escultórica y su uso tradicional en productos de cuidado externo.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Suculenta</span>
+                  <span>Medicinal tradicional</span>
+                  <span>Sol</span>
+                  <span>Sequía</span>
+                  <span>Maceta</span>
+                  <span>Bajo mantenimiento</span>
+                </div>
+                <a class="boton boton-descarga" href="info/aloe-vera.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-interior cat-suculentas cat-sol cat-sequia cat-macetas cat-balcones-terrazas cat-bajo-mantenimiento">
+              <h3>Echeveria elegans</h3>
+              <img src="imágenes/echeveria.jpg" alt="Echeveria elegans formando una roseta compacta" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>Suculenta compacta de roseta, ideal para macetas pequeñas, balcones soleados y jardines secos. El exceso de agua es su principal problema.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Suculenta</span>
+                  <span>Sol</span>
+                  <span>Sequía</span>
+                  <span>Maceta</span>
+                  <span>Balcón</span>
+                  <span>Bajo mantenimiento</span>
+                </div>
+                <a class="boton boton-descarga" href="info/echeveria-elegans.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-interior cat-helechos cat-colgantes cat-sombra cat-tropicales cat-macetas cat-follaje">
+              <h3>Nephrolepis exaltata</h3>
+              <img src="imágenes/helecho-boston.jpg" alt="Helecho Boston con frondes arqueadas" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>El helecho Boston aporta textura fina y frondes arqueadas. Prefiere luz indirecta, humedad ambiental y sustrato apenas húmedo.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Helecho</span>
+                  <span>Interior</span>
+                  <span>Semisombra</span>
+                  <span>Tropical</span>
+                  <span>Colgante</span>
+                  <span>Follaje</span>
+                </div>
+                <a class="boton boton-descarga" href="info/nephrolepis-exaltata.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-interior cat-helechos cat-sombra cat-tropicales cat-macetas cat-follaje">
+              <h3>Adiantum raddianum</h3>
+              <img src="imágenes/adiantum.jpg" alt="Adiantum raddianum con frondes delicadas" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>Helecho delicado, de tallos oscuros y follaje liviano. Necesita sombra luminosa, humedad constante y protección contra aire seco.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Helecho</span>
+                  <span>Interior</span>
+                  <span>Semisombra</span>
+                  <span>Tropical</span>
+                  <span>Maceta</span>
+                  <span>Follaje</span>
+                </div>
+                <a class="boton boton-descarga" href="info/adiantum-raddianum.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-interior cat-helechos cat-sombra cat-tropicales cat-macetas cat-follaje">
+              <h3>Asplenium nidus</h3>
+              <img src="imágenes/asplenium.jpg" alt="Helecho nido de ave con frondes verdes" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>Helecho tropical de frondes anchas y brillantes. Se adapta bien a interiores con luz indirecta, ambiente húmedo y sustrato suelto.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Helecho</span>
+                  <span>Interior</span>
+                  <span>Semisombra</span>
+                  <span>Tropical</span>
+                  <span>Maceta</span>
+                  <span>Follaje</span>
+                </div>
+                <a class="boton boton-descarga" href="info/asplenium-nidus.pdf" download>Descargar PDF</a>
               </div>
             </article>
           </div>
@@ -100,33 +351,217 @@
             <h2>Plantas de exterior</h2>
           </div>
           <div class="grid-plantas">
-            <article class="card-planta">
+            <article class="card-planta cat-exterior cat-arbustos cat-sol cat-sequia cat-aromaticas cat-florales cat-borduras cat-polinizadores cat-macetas cat-balcones-terrazas">
               <h3>Lavandula angustifolia</h3>
               <img src="imágenes/lavanda.jpg" alt="Flores violetas de lavanda" loading="lazy">
               <div class="info-planta">
                 <h4>Información de la planta</h4>
                 <p>La lavanda es un subarbusto aromático mediterráneo. Se desarrolla mejor a pleno sol, con suelo liviano y muy buen drenaje; una vez establecida tolera períodos secos.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Exterior</span>
+                  <span>Sol</span>
+                  <span>Aromática</span>
+                  <span>Floral</span>
+                  <span>Sequía</span>
+                  <span>Bordura</span>
+                </div>
                 <a class="boton boton-descarga" href="info/lavanda.pdf" download>Descargar PDF</a>
               </div>
             </article>
 
-            <article class="card-planta">
+            <article class="card-planta cat-exterior cat-arbustos cat-sol cat-sequia cat-aromaticas cat-huerta cat-florales cat-borduras cat-polinizadores cat-macetas cat-balcones-terrazas cat-bajo-mantenimiento">
               <h3>Salvia rosmarinus</h3>
               <img src="imágenes/romero.jpg" alt="Planta de romero con follaje fino" loading="lazy">
               <div class="info-planta">
                 <h4>Información de la planta</h4>
                 <p>El romero es un arbusto perenne y aromático. Necesita pleno sol, aireación y suelo seco a medianamente húmedo, siempre con drenaje excelente.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Exterior</span>
+                  <span>Sol</span>
+                  <span>Aromática</span>
+                  <span>Huerta</span>
+                  <span>Sequía</span>
+                  <span>Bajo mantenimiento</span>
+                </div>
                 <a class="boton boton-descarga" href="info/romero.pdf" download>Descargar PDF</a>
               </div>
             </article>
 
-            <article class="card-planta">
+            <article class="card-planta cat-exterior cat-arbustos cat-sombra cat-florales cat-borduras cat-macetas cat-balcones-terrazas">
               <h3>Hydrangea macrophylla</h3>
               <img src="imágenes/hortensia.jpg" alt="Flores de hortensia rosadas y azules" loading="lazy">
               <div class="info-planta">
                 <h4>Información de la planta</h4>
                 <p>La hortensia es un arbusto ornamental de flores grandes. Prefiere luz filtrada o media sombra, suelo húmedo y buen drenaje; el pH del suelo puede influir en el color de sus flores.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Exterior</span>
+                  <span>Arbusto</span>
+                  <span>Semisombra</span>
+                  <span>Floral</span>
+                  <span>Bordura</span>
+                  <span>Maceta</span>
+                </div>
                 <a class="boton boton-descarga" href="info/hortensia.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-exterior cat-herbaceas cat-sol cat-aromaticas cat-medicinales cat-huerta cat-florales cat-polinizadores cat-macetas">
+              <h3>Ocimum basilicum</h3>
+              <img src="imágenes/albahaca.jpg" alt="Planta de albahaca en crecimiento" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>La albahaca es una hierba aromática clave para cocina y huerta. Prefiere pleno sol, suelo bien drenado y poda frecuente para producir hojas tiernas.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Aromática</span>
+                  <span>Huerta</span>
+                  <span>Sol</span>
+                  <span>Medicinal tradicional</span>
+                  <span>Polinizadores</span>
+                  <span>Maceta</span>
+                </div>
+                <a class="boton boton-descarga" href="info/ocimum-basilicum.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-exterior cat-herbaceas cat-cubresuelos cat-sombra cat-aromaticas cat-medicinales cat-huerta cat-polinizadores cat-macetas">
+              <h3>Mentha spicata</h3>
+              <img src="imágenes/menta.jpg" alt="Menta con hojas verdes y flores" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>La menta es una aromática vigorosa para infusiones, cocina y macetas. Conviene cultivarla en contenedor porque se expande con facilidad.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Aromática</span>
+                  <span>Huerta</span>
+                  <span>Semisombra</span>
+                  <span>Cubresuelo</span>
+                  <span>Polinizadores</span>
+                  <span>Maceta</span>
+                </div>
+                <a class="boton boton-descarga" href="info/mentha-spicata.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-exterior cat-herbaceas cat-sol cat-florales cat-borduras cat-polinizadores cat-macetas cat-balcones-terrazas">
+              <h3>Pelargonium zonale</h3>
+              <img src="imágenes/geranio.jpg" alt="Geranio con flores rosadas" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>El geranio es una planta floral muy usada en balcones, terrazas y borduras. Da mejor floración con buen sol y riego moderado.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Exterior</span>
+                  <span>Floral</span>
+                  <span>Sol</span>
+                  <span>Balcón</span>
+                  <span>Bordura</span>
+                  <span>Maceta</span>
+                </div>
+                <a class="boton boton-descarga" href="info/pelargonium-zonale.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-exterior cat-arboles-frutales cat-sol cat-aromaticas cat-huerta cat-florales cat-polinizadores cat-macetas cat-balcones-terrazas">
+              <h3>Citrus x limon</h3>
+              <img src="imágenes/limonero.jpg" alt="Limonero con frutos amarillos" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>El limonero es un árbol frutal de flor perfumada y frutos comestibles. En maceta permite protegerlo mejor del frío y controlar su tamaño.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Árbol frutal</span>
+                  <span>Sol</span>
+                  <span>Huerta</span>
+                  <span>Aromática</span>
+                  <span>Polinizadores</span>
+                  <span>Maceta</span>
+                </div>
+                <a class="boton boton-descarga" href="info/citrus-limon.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-exterior cat-arboles-frutales cat-sol cat-sequia cat-huerta cat-bajo-mantenimiento">
+              <h3>Ficus carica</h3>
+              <img src="imágenes/higuera.jpg" alt="Higuera con hojas y frutos" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>La higuera es un frutal resistente para jardines soleados. Tolera períodos secos una vez establecida y aporta fruta comestible de verano.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Árbol frutal</span>
+                  <span>Sol</span>
+                  <span>Huerta</span>
+                  <span>Sequía</span>
+                  <span>Bajo mantenimiento</span>
+                </div>
+                <a class="boton boton-descarga" href="info/ficus-carica.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-exterior cat-arboles-frutales cat-arbustos cat-sol cat-sequia cat-huerta cat-florales cat-borduras cat-polinizadores cat-bajo-mantenimiento">
+              <h3>Punica granatum</h3>
+              <img src="imágenes/granado.jpg" alt="Fruto de granado abierto en la planta" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>El granado puede crecer como arbusto o árbol pequeño. Ofrece flores vistosas, frutos comestibles y buena tolerancia a sequía cuando está establecido.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Árbol frutal</span>
+                  <span>Arbusto</span>
+                  <span>Sol</span>
+                  <span>Floral</span>
+                  <span>Sequía</span>
+                  <span>Bordura</span>
+                </div>
+                <a class="boton boton-descarga" href="info/punica-granatum.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-exterior cat-gramineas cat-cubresuelos cat-sol cat-sequia cat-borduras cat-macetas cat-balcones-terrazas cat-bajo-mantenimiento">
+              <h3>Festuca glauca</h3>
+              <img src="imágenes/festuca.jpg" alt="Mata compacta de Festuca glauca azulada" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>Gramínea ornamental compacta de follaje azul grisáceo. Sirve para bordes, rocallas, macetas y cubresuelos de textura fina.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Gramínea</span>
+                  <span>Sol</span>
+                  <span>Sequía</span>
+                  <span>Cubresuelo</span>
+                  <span>Bordura</span>
+                  <span>Maceta</span>
+                </div>
+                <a class="boton boton-descarga" href="info/festuca-glauca.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-exterior cat-gramineas cat-sol cat-borduras cat-macetas cat-balcones-terrazas cat-bajo-mantenimiento">
+              <h3>Pennisetum alopecuroides</h3>
+              <img src="imágenes/pennisetum.jpg" alt="Pennisetum alopecuroides con espigas suaves" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>Gramínea ornamental de mata arqueada y espigas suaves. Aporta movimiento en borduras, macizos y macetas grandes a pleno sol.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Gramínea</span>
+                  <span>Sol</span>
+                  <span>Bordura</span>
+                  <span>Balcón</span>
+                  <span>Maceta</span>
+                  <span>Bajo mantenimiento</span>
+                </div>
+                <a class="boton boton-descarga" href="info/pennisetum-alopecuroides.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta cat-exterior cat-gramineas cat-sol cat-sequia cat-borduras cat-bajo-mantenimiento">
+              <h3>Cortaderia selloana</h3>
+              <img src="imágenes/cortaderia.jpg" alt="Cortaderia selloana con penachos claros" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>La cortadera es una gramínea perenne de gran porte y penachos vistosos. Necesita espacio, pleno sol y manejo cuidadoso por sus hojas filosas.</p>
+                <div class="chips-categorias" aria-label="Categorías">
+                  <span>Gramínea</span>
+                  <span>Sol</span>
+                  <span>Sequía</span>
+                  <span>Bordura</span>
+                  <span>Bajo mantenimiento</span>
+                </div>
+                <a class="boton boton-descarga" href="info/cortaderia-selloana.pdf" download>Descargar PDF</a>
               </div>
             </article>
           </div>
@@ -178,7 +613,7 @@
 
   <footer class="pie">
     <div class="contenedor">
-      <p>Información recopilada de <a href="https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/propagating-monstera-deliciosa">University of Minnesota Extension</a> y <a href="https://plants.ces.ncsu.edu/">NC State Extension Gardener Plant Toolbox</a>.</p>
+      <p>Información y criterios de clasificación consultados en <a href="https://www.rhs.org.uk/plants/types">RHS Plant Types</a>, <a href="https://plants.ces.ncsu.edu/">NC State Extension Gardener Plant Toolbox</a>, <a href="https://yardandgarden.extension.iastate.edu/how-to/common-and-popular-succulent-species">Iowa State University Extension</a> y <a href="https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/propagating-monstera-deliciosa">University of Minnesota Extension</a>.</p>
       <p>Imágenes obtenidas desde Wikimedia Commons y guardadas localmente en la carpeta <strong>imágenes</strong>. Fichas PDF guardadas en <strong>info</strong>.</p>
     </div>
   </footer>
