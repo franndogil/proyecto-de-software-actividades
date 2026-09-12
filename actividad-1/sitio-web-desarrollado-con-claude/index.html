@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sitio estático con las plantas de interior y de exterior que cultivo en mi jardín, con una ficha en PDF para descargar de cada una.">
+  <title>El jardín de Franco · Plantas de interior y de exterior</title>
+  <link rel="stylesheet" href="estilosIA.css">
+</head>
+
+<body id="inicio">
+
+  <!-- ============================= NAVBAR =============================
+       El menú móvil funciona sin JavaScript: el checkbox #menu está
+       oculto y la etiqueta .hamburguesa lo activa. Con #menu:checked
+       se despliega la lista. -->
+  <header class="cabecera">
+    <nav class="navbar" aria-label="Navegación principal">
+      <a class="marca" href="#inicio">
+        <span class="marca-hoja" aria-hidden="true"></span>
+        El jardín de Franco
+      </a>
+
+      <input class="menu-check" type="checkbox" id="menu">
+      <label class="hamburguesa" for="menu" title="Abrir o cerrar el menú">
+        <span class="barra" aria-hidden="true"></span>
+        <span class="barra" aria-hidden="true"></span>
+        <span class="barra" aria-hidden="true"></span>
+        <span class="solo-lectores">Menú</span>
+      </label>
+
+      <ul class="menu-lista">
+        <li><a href="#plantas-interior">Plantas de interior</a></li>
+        <li><a href="#plantas-exterior">Plantas de exterior</a></li>
+        <li><a href="#contacto">Información de contacto</a></li>
+        <li><a href="#mantenimiento">Mantenimiento del sitio</a></li>
+      </ul>
+
+      <!-- Capa que aparece con el menú abierto: tocándola, se cierra. -->
+      <label class="fondo-menu" for="menu" aria-hidden="true"></label>
+    </nav>
+  </header>
+
+  <!-- ============================= PORTADA ============================= -->
+  <section class="portada">
+    <div class="contenedor portada-caja">
+      <p class="portada-volanta">Jardín particular · Buenos Aires</p>
+      <h1>Las plantas que cultivo en mi jardín</h1>
+      <p class="portada-texto">
+        Ocho plantas que tengo en casa, divididas entre las que viven puertas adentro y
+        las que están en el cantero. De cada una vas a encontrar una foto, sus cuidados
+        básicos y una ficha completa en PDF para descargar.
+      </p>
+      <p class="portada-acciones">
+        <a class="boton" href="#plantas"><span>Ver las plantas</span></a>
+        <a class="boton boton-borde" href="#contacto"><span>Escribirme</span></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================= PLANTAS =============================
+       Filtro por categoría 100 % estático: tres radio buttons ocultos
+       (#cat-todas, #cat-interior, #cat-exterior) y una lista desplegable
+       hecha con el elemento details. Cada opción es una etiqueta label
+       que marca su radio, y el CSS oculta el grupo que no corresponde. -->
+  <main>
+  <section class="seccion" id="plantas">
+    <div class="contenedor">
+      <p class="volanta">Catálogo</p>
+      <h2>Plantas</h2>
+      <p class="seccion-intro">
+        Elegí una categoría en la lista desplegable para ver solo las plantas de interior
+        o solo las de exterior. Cada tarjeta tiene el enlace a su ficha en PDF.
+      </p>
+
+      <div class="filtro-bloque">
+
+        <input class="filtro-radio" type="radio" name="categoria" id="cat-todas" checked>
+        <input class="filtro-radio" type="radio" name="categoria" id="cat-interior">
+        <input class="filtro-radio" type="radio" name="categoria" id="cat-exterior">
+
+        <details class="filtro">
+          <summary class="filtro-boton">
+            <span class="filtro-etiqueta">Categoría</span>
+            <span class="filtro-valor">
+              <span class="valor valor-todas">Todas las plantas</span>
+              <span class="valor valor-interior">Plantas de interior</span>
+              <span class="valor valor-exterior">Plantas de exterior</span>
+            </span>
+            <span class="filtro-flecha" aria-hidden="true"></span>
+          </summary>
+
+          <ul class="filtro-opciones">
+            <li><label for="cat-todas">Todas las plantas <span class="cantidad">8</span></label></li>
+            <li><label for="cat-interior">Plantas de interior <span class="cantidad">4</span></label></li>
+            <li><label for="cat-exterior">Plantas de exterior <span class="cantidad">4</span></label></li>
+          </ul>
+        </details>
+
+        <div class="catalogo">
+
+          <!-- ---------------- PLANTAS DE INTERIOR ---------------- -->
+          <section class="grupo grupo-interior" id="plantas-interior">
+            <header class="grupo-titulo">
+              <h3>Plantas de interior</h3>
+              <p>Viven adentro todo el año, con luz indirecta y riegos espaciados.</p>
+            </header>
+
+            <div class="grilla">
+
+              <article class="card">
+                <h4 class="card-nombre">Potus</h4>
+                <img class="card-img" src="imágenes/potus.jpg" loading="lazy"
+                     alt="Guías de potus con hojas acorazonadas verdes y amarillas">
+                <div class="card-info">
+                  <p class="card-cientifico">Epipremnum aureum</p>
+                  <p class="card-texto">
+                    Trepadora de hojas acorazonadas y variegadas, famosa por ser prácticamente
+                    indestructible. Crece en agua o en tierra y, con un tutor, supera los dos metros.
+                  </p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Media indirecta</li>
+                    <li><span>Riego</span> Cuando los primeros 2-3 cm del sustrato están secos</li>
+                    <li><span>Origen</span> Sudeste asiático</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/potus.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card">
+                <h4 class="card-nombre">Lengua de suegra</h4>
+                <img class="card-img" src="imágenes/lengua-de-suegra.jpg" loading="lazy"
+                     alt="Lengua de suegra en maceta, con hojas erectas y jaspeadas">
+                <div class="card-info">
+                  <p class="card-cientifico">Dracaena trifasciata</p>
+                  <p class="card-texto">
+                    Semisuculenta de hojas erectas, rígidas y jaspeadas. Aguanta el aire seco,
+                    la poca luz y los olvidos de riego mejor que cualquier otra planta de interior.
+                  </p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> De semisombra a luz intensa</li>
+                    <li><span>Riego</span> Escaso, dejando secar el sustrato por completo</li>
+                    <li><span>Origen</span> África tropical occidental</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/lengua-de-suegra.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card">
+                <h4 class="card-nombre">Costilla de Adán</h4>
+                <img class="card-img" src="imágenes/costilla-de-adan.jpg" loading="lazy"
+                     alt="Hojas grandes y perforadas de costilla de Adán">
+                <div class="card-info">
+                  <p class="card-cientifico">Monstera deliciosa</p>
+                  <p class="card-texto">
+                    Trepadora tropical de hojas enormes, perforadas y brillantes. Con un tutor de
+                    musgo se convierte en la planta más escenográfica de la casa.
+                  </p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Indirecta abundante, nunca sol del mediodía</li>
+                    <li><span>Riego</span> Regular, sin encharcar</li>
+                    <li><span>Origen</span> Selvas de México a Argentina</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/costilla-de-adan.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card">
+                <h4 class="card-nombre">Cinta</h4>
+                <img class="card-img" src="imágenes/cinta.jpg" loading="lazy"
+                     alt="Mata de cinta con hojas largas de borde blanco y estolones">
+                <div class="card-info">
+                  <p class="card-cientifico">Chlorophytum comosum</p>
+                  <p class="card-texto">
+                    También llamada malamadre o lazo de amor. De la roseta central salen estolones
+                    colgantes con hijuelos que enraízan solos: una maceta se convierte en diez.
+                  </p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Media, sin sol directo</li>
+                    <li><span>Riego</span> Medio, más frecuente en verano</li>
+                    <li><span>Origen</span> Sudáfrica</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/cinta.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+            </div>
+          </section>
+
+          <!-- ---------------- PLANTAS DE EXTERIOR ---------------- -->
+          <section class="grupo grupo-exterior" id="plantas-exterior">
+            <header class="grupo-titulo">
+              <h3>Plantas de exterior</h3>
+              <p>Están en el cantero y en macetas al sol, aguantando lluvia, viento y heladas.</p>
+            </header>
+
+            <div class="grilla">
+
+              <article class="card">
+                <h4 class="card-nombre">Lavanda</h4>
+                <img class="card-img" src="imágenes/lavanda.jpg" loading="lazy"
+                     alt="Hileras de lavanda en flor con espigas violetas">
+                <div class="card-info">
+                  <p class="card-cientifico">Lavandula angustifolia</p>
+                  <p class="card-texto">
+                    Mata mediterránea de follaje grisáceo y espigas violetas muy perfumadas. Quiere
+                    sol, poca agua y tierra suelta; a cambio, llena el jardín de abejas y aroma.
+                  </p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Pleno sol, 6 a 8 horas diarias</li>
+                    <li><span>Riego</span> Escaso; resiste muy bien la sequía</li>
+                    <li><span>Origen</span> Región mediterránea</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/lavanda.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card">
+                <h4 class="card-nombre">Romero</h4>
+                <img class="card-img" src="imágenes/romero.jpg" loading="lazy"
+                     alt="Mata de romero en flor con pequeñas flores azul violeta">
+                <div class="card-info">
+                  <p class="card-cientifico">Salvia rosmarinus</p>
+                  <p class="card-texto">
+                    Arbusto aromático de hoja perenne y flores azul violeta. La planta más agradecida
+                    de un cantero seco: mucho sol, poca agua y un corte ligero cada tanto.
+                  </p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Pleno sol todo el año</li>
+                    <li><span>Riego</span> Muy escaso una vez arraigado</li>
+                    <li><span>Origen</span> Región mediterránea</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/romero.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card">
+                <h4 class="card-nombre">Hortensia</h4>
+                <img class="card-img" src="imágenes/hortensia.jpg" loading="lazy"
+                     alt="Hortensias con grandes cabezuelas de flores azules">
+                <div class="card-info">
+                  <p class="card-cientifico">Hydrangea macrophylla</p>
+                  <p class="card-texto">
+                    Arbusto caducifolio de cabezuelas enormes. Su particularidad es que el color de
+                    las flores cambia según la acidez del suelo: azul en suelo ácido, rosa si no lo es.
+                  </p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Semisombra, con sol suave de mañana</li>
+                    <li><span>Riego</span> Abundante, 3 o 4 veces por semana en verano</li>
+                    <li><span>Origen</span> Japón</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/hortensia.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+              <article class="card">
+                <h4 class="card-nombre">Jazmín común</h4>
+                <img class="card-img" src="imágenes/jazmin.jpg" loading="lazy"
+                     alt="Flores blancas de jazmín común sobre su follaje compuesto">
+                <div class="card-info">
+                  <p class="card-cientifico">Jasminum officinale</p>
+                  <p class="card-texto">
+                    Trepadora de flores blancas estrelladas y perfume intenso al atardecer. Cubre
+                    muros, rejas y pérgolas en pocas temporadas.
+                  </p>
+                  <ul class="card-datos">
+                    <li><span>Luz</span> Sol o semisombra</li>
+                    <li><span>Riego</span> Regular en primavera y verano</li>
+                    <li><span>Origen</span> Del Cáucaso al oeste de China</li>
+                  </ul>
+                </div>
+                <a class="boton boton-pdf" href="info/jazmin.pdf" download>
+                  <span>Descargar ficha en PDF</span>
+                </a>
+              </article>
+
+            </div>
+          </section>
+
+        </div><!-- /catalogo -->
+      </div><!-- /filtro-bloque -->
+    </div>
+  </section>
+
+  <!-- ============================= CONTACTO ============================= -->
+  <section class="seccion seccion-clara" id="contacto">
+    <div class="contenedor contenedor-angosto">
+      <p class="volanta">Escribime</p>
+      <h2>Información de contacto</h2>
+      <p class="seccion-intro">
+        Dejame tus datos y te respondo apenas pueda: dudas sobre alguna planta, esquejes
+        para intercambiar o consultas por el sitio.
+      </p>
+
+      <form class="formulario" action="mailto:franndogil@gmail.com" method="post" enctype="text/plain">
+        <div class="campo">
+          <label for="nombre">Nombre/s</label>
+          <input type="text" id="nombre" name="Nombre" placeholder="Franco Matías" required>
+        </div>
+
+        <div class="campo">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" name="Apellido" placeholder="Dogil" required>
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="Telefono" placeholder="+54 9 11 3841-6928">
+        </div>
+
+        <div class="campo">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="Email" placeholder="franndogil@gmail.com" required>
+        </div>
+
+        <div class="campo campo-ancho">
+          <button class="boton boton-enviar" type="submit"><span>Enviar información</span></button>
+          <p class="nota">Los campos marcados se envían por correo desde tu propio cliente de mail.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========================== MANTENIMIENTO ========================== -->
+  <section class="seccion seccion-oscura" id="mantenimiento">
+    <div class="contenedor contenedor-angosto">
+      <p class="volanta volanta-clara">Servicios</p>
+      <h2>Mantenimiento del sitio</h2>
+      <p class="seccion-intro">
+        ¿Te interesa tener un sitio web similar? Armo y mantengo sitios estáticos como este:
+        catálogos, portfolios y páginas institucionales, livianas y fáciles de actualizar.
+      </p>
+
+      <div class="tarjeta-contacto">
+        <p class="tarjeta-nombre">Franco Matías Dogil</p>
+        <dl class="datos-contacto">
+          <div>
+            <dt>Teléfono</dt>
+            <dd><a href="tel:+5491138416928">+54 9 11 3841-6928</a></dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd><a href="mailto:franndogil@gmail.com">franndogil@gmail.com</a></dd>
+          </div>
+        </dl>
+        <p class="tarjeta-acciones">
+          <a class="boton boton-claro" href="mailto:franndogil@gmail.com"><span>Pedir presupuesto</span></a>
+        </p>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ============================= PIE ============================= -->
+  <footer class="pie">
+    <div class="contenedor pie-caja">
+      <p class="pie-marca">El jardín de Franco</p>
+      <p class="pie-texto">
+        Sitio estático hecho con HTML y CSS. Las fotografías provienen de Wikimedia Commons y
+        la información de las fichas fue recopilada de Wikipedia en español y de guías de cultivo.
+      </p>
+      <ul class="pie-links">
+        <li><a href="#plantas-interior">Plantas de interior</a></li>
+        <li><a href="#plantas-exterior">Plantas de exterior</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#mantenimiento">Mantenimiento</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

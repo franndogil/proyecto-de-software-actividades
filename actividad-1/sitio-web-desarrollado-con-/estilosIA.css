@@ -1,0 +1,534 @@
+:root {
+  --verde-profundo: #173f2a;
+  --verde-hoja: #2f6d3c;
+  --verde-medio: #6b8f3f;
+  --verde-suave: #dfe9d2;
+  --papel: #f7fbf2;
+  --marfil: #fffdf6;
+  --tierra: #574b37;
+  --dorado: #c9a227;
+  --texto: #203524;
+  --borde: #7c9b52;
+  --sombra: rgba(23, 63, 42, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--texto);
+  background: var(--papel);
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+.contenedor {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.encabezado {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--verde-profundo);
+  border-bottom: 4px solid var(--dorado);
+}
+
+.barra {
+  position: relative;
+  width: min(1120px, calc(100% - 32px));
+  min-height: 72px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.marca {
+  color: var(--marfil);
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0;
+  font-size: 1.15rem;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu a,
+.boton,
+.desplegable summary,
+.desplegable a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.2;
+  transform: skewX(-5deg);
+  transform-origin: center;
+}
+
+.menu a {
+  color: var(--marfil);
+  border-color: rgba(255, 253, 246, 0.22);
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  background: var(--verde-hoja);
+  outline: 2px solid var(--dorado);
+  outline-offset: 2px;
+}
+
+.nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hamburguesa {
+  display: none;
+  width: 48px;
+  height: 42px;
+  border: 2px solid rgba(255, 253, 246, 0.5);
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  transform: skewX(-5deg);
+}
+
+.hamburguesa span {
+  width: 24px;
+  height: 3px;
+  background: var(--marfil);
+}
+
+.portada {
+  min-height: 58vh;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(rgba(23, 63, 42, 0.74), rgba(23, 63, 42, 0.58)),
+    url("imágenes/lavanda.jpg") center 42% / cover;
+  color: var(--marfil);
+  border-bottom: 4px solid var(--verde-medio);
+}
+
+.portada-contenido {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 72px 0 64px;
+}
+
+.portada h1,
+.titulo-seccion h2,
+.texto-seccion h2,
+.encabezado-grupo h2 {
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.portada h1 {
+  max-width: 780px;
+  font-size: clamp(2.1rem, 6vw, 4.9rem);
+}
+
+.portada p {
+  max-width: 680px;
+  font-size: 1.1rem;
+}
+
+.etiqueta {
+  display: inline-block;
+  margin: 0 0 12px;
+  color: var(--dorado);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.boton {
+  width: fit-content;
+  color: var(--marfil);
+  background: var(--verde-hoja);
+  border-color: var(--verde-profundo);
+  box-shadow: 4px 4px 0 var(--dorado);
+  cursor: pointer;
+}
+
+.boton:hover,
+.boton:focus-visible {
+  background: var(--verde-profundo);
+  outline: 2px solid var(--dorado);
+  outline-offset: 3px;
+}
+
+.boton-secundario {
+  background: var(--tierra);
+}
+
+.boton-descarga {
+  margin-top: 10px;
+  font-size: 0.92rem;
+}
+
+.seccion {
+  padding: 72px 0;
+  scroll-margin-top: 92px;
+}
+
+.plantas {
+  background: var(--marfil);
+}
+
+.titulo-seccion {
+  max-width: 760px;
+  margin-bottom: 24px;
+}
+
+.titulo-seccion h2,
+.texto-seccion h2,
+.encabezado-grupo h2 {
+  color: var(--verde-profundo);
+  font-size: clamp(1.8rem, 4vw, 2.9rem);
+}
+
+.titulo-seccion p,
+.texto-seccion p {
+  margin: 12px 0 0;
+}
+
+.filtro-categorias {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 34px;
+  padding: 18px;
+  border-left: 4px solid var(--verde-medio);
+  background: var(--verde-suave);
+}
+
+.filtro-categorias span {
+  font-weight: 800;
+  color: var(--verde-profundo);
+}
+
+.desplegable {
+  position: relative;
+}
+
+.desplegable summary {
+  list-style: none;
+  background: var(--marfil);
+  border-color: var(--borde);
+  cursor: pointer;
+}
+
+.desplegable summary::-webkit-details-marker {
+  display: none;
+}
+
+.desplegable[open] summary {
+  background: var(--verde-hoja);
+  color: var(--marfil);
+}
+
+.desplegable a {
+  display: flex;
+  margin-top: 8px;
+  background: var(--marfil);
+  border-color: var(--borde);
+  color: var(--verde-profundo);
+}
+
+.desplegable a:hover,
+.desplegable a:focus-visible {
+  background: var(--verde-profundo);
+  color: var(--marfil);
+}
+
+.grupo-plantas {
+  scroll-margin-top: 104px;
+  margin-top: 38px;
+}
+
+.plantas:has(#plantas-interior:target) .grupo-exterior,
+.plantas:has(#plantas-exterior:target) .grupo-interior {
+  display: none;
+}
+
+.encabezado-grupo {
+  margin-bottom: 12px;
+}
+
+.grid-plantas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 0 -15px;
+}
+
+.card-planta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 25px;
+  margin: 15px;
+  border: 4px solid var(--borde);
+  border-radius: 4px;
+  background: #fbfff7;
+  box-shadow: 8px 8px 0 var(--sombra);
+}
+
+.card-planta h3 {
+  min-height: 58px;
+  margin: 0 0 16px;
+  color: var(--verde-profundo);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.card-planta img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 4px solid var(--verde-suave);
+}
+
+.info-planta {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 18px;
+}
+
+.info-planta h4 {
+  margin: 0 0 8px;
+  color: var(--tierra);
+  font-size: 1rem;
+}
+
+.info-planta p {
+  margin: 0;
+  flex: 1;
+}
+
+.contacto {
+  background: #eef6e6;
+}
+
+.mantenimiento {
+  background: var(--marfil);
+  border-top: 4px solid var(--verde-suave);
+}
+
+.dos-columnas {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1fr);
+  gap: 38px;
+  align-items: start;
+}
+
+.formulario,
+.datos-mantenimiento {
+  border: 4px solid var(--borde);
+  border-radius: 4px;
+  background: #fbfff7;
+  padding: 28px;
+  box-shadow: 8px 8px 0 var(--sombra);
+}
+
+.formulario {
+  display: grid;
+  gap: 10px;
+}
+
+.formulario label {
+  font-weight: 800;
+  color: var(--verde-profundo);
+}
+
+.formulario input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 3px solid var(--verde-suave);
+  border-radius: 3px;
+  background: var(--marfil);
+  color: var(--texto);
+  font: inherit;
+}
+
+.formulario input:focus {
+  outline: 3px solid var(--dorado);
+  border-color: var(--verde-hoja);
+}
+
+.formulario input::placeholder {
+  color: #7d8278;
+  opacity: 1;
+}
+
+.formulario button {
+  margin-top: 12px;
+  border-width: 2px;
+  font: inherit;
+}
+
+.datos-mantenimiento p {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.datos-mantenimiento a {
+  color: var(--verde-profundo);
+  font-weight: 800;
+}
+
+.pie {
+  padding: 28px 0;
+  color: var(--marfil);
+  background: var(--verde-profundo);
+  border-top: 4px solid var(--dorado);
+}
+
+.pie p {
+  margin: 8px 0;
+}
+
+.pie a {
+  color: var(--marfil);
+  font-weight: 800;
+}
+
+@media (max-width: 920px) {
+  .grid-plantas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dos-columnas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .barra {
+    min-height: 66px;
+  }
+
+  .hamburguesa {
+    display: flex;
+  }
+
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    max-height: 0;
+    overflow: hidden;
+    background: var(--verde-profundo);
+    border-bottom: 4px solid var(--dorado);
+    transition: max-height 0.25s ease, padding 0.25s ease;
+  }
+
+  .nav-toggle:checked ~ .menu {
+    max-height: 420px;
+    padding: 12px 0 16px;
+  }
+
+  .menu a {
+    width: 100%;
+  }
+
+  .seccion {
+    padding: 54px 0;
+  }
+
+  .portada {
+    min-height: 62vh;
+  }
+
+  .grid-plantas {
+    grid-template-columns: 1fr;
+  }
+
+  .card-planta h3 {
+    min-height: auto;
+  }
+
+  .filtro-categorias {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .desplegable,
+  .desplegable summary,
+  .desplegable a {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .contenedor,
+  .barra,
+  .portada-contenido {
+    width: min(100% - 20px, 1120px);
+  }
+
+  .card-planta {
+    padding: 25px;
+    margin: 15px 0;
+  }
+
+  .grid-plantas {
+    margin: 0;
+  }
+
+  .formulario,
+  .datos-mantenimiento {
+    padding: 22px;
+  }
+}

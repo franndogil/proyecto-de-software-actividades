@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jardín de Franco</title>
+  <link rel="stylesheet" href="estilosIA.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="barra">
+      <a class="marca" href="#inicio">Jardín de Franco</a>
+      <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Abrir menú">
+      <label class="hamburguesa" for="nav-toggle" aria-label="Abrir navegación">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <nav class="menu" aria-label="Navegación principal">
+        <a href="#contacto">Información de contacto</a>
+        <a href="#mantenimiento">Mantenimiento del sitio</a>
+        <a href="#plantas-interior">Plantas de interior</a>
+        <a href="#plantas-exterior">Plantas de exterior</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="portada">
+      <div class="portada-contenido">
+        <p class="etiqueta">Catálogo estático de jardín</p>
+        <h1>Plantas que cultivo y quiero tener bien documentadas</h1>
+        <p>Una selección simple de plantas de interior y exterior, con imágenes locales y fichas PDF listas para descargar.</p>
+        <div class="acciones">
+          <a class="boton" href="#plantas">Ver plantas</a>
+          <a class="boton boton-secundario" href="#contacto">Contacto</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="plantas" class="seccion plantas">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <p class="etiqueta">Plantas</p>
+          <h2>Explorar por categoría</h2>
+          <p>Cada planta tiene una imagen local y una ficha descargable con cuidados principales.</p>
+        </div>
+
+        <div class="filtro-categorias">
+          <span>Categoría</span>
+          <details class="desplegable">
+            <summary>Seleccionar</summary>
+            <a href="#plantas">Todas</a>
+            <a href="#plantas-interior">Plantas de interior</a>
+            <a href="#plantas-exterior">Plantas de exterior</a>
+          </details>
+        </div>
+
+        <section id="plantas-interior" class="grupo-plantas grupo-interior">
+          <div class="encabezado-grupo">
+            <p class="etiqueta">Interior</p>
+            <h2>Plantas de interior</h2>
+          </div>
+          <div class="grid-plantas">
+            <article class="card-planta">
+              <h3>Monstera deliciosa</h3>
+              <img src="imágenes/monstera.jpg" alt="Monstera deliciosa en maceta" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>También conocida como costilla de Adán, es una trepadora tropical de hojas grandes y perforadas. Va bien en interiores con luz media a brillante indirecta y riego cuando el sustrato comienza a secarse.</p>
+                <a class="boton boton-descarga" href="info/monstera-deliciosa.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta">
+              <h3>Dracaena trifasciata</h3>
+              <img src="imágenes/lengua-de-suegra.jpg" alt="Lengua de suegra con hojas verticales" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>Conocida como lengua de suegra, tiene hojas rígidas y verticales. Tolera ambientes de poca luz, requiere muy poco riego y necesita un sustrato con buen drenaje para evitar pudrición de raíces.</p>
+                <a class="boton boton-descarga" href="info/lengua-de-suegra.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta">
+              <h3>Epipremnum aureum</h3>
+              <img src="imágenes/pothos.jpg" alt="Pothos con hojas verdes y variegadas" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>El pothos o potus es una planta colgante muy resistente. Prefiere luz indirecta, tolera sitios menos iluminados y se adapta bien a macetas, estantes o canastos colgantes.</p>
+                <a class="boton boton-descarga" href="info/pothos.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="plantas-exterior" class="grupo-plantas grupo-exterior">
+          <div class="encabezado-grupo">
+            <p class="etiqueta">Exterior</p>
+            <h2>Plantas de exterior</h2>
+          </div>
+          <div class="grid-plantas">
+            <article class="card-planta">
+              <h3>Lavandula angustifolia</h3>
+              <img src="imágenes/lavanda.jpg" alt="Flores violetas de lavanda" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>La lavanda es un subarbusto aromático mediterráneo. Se desarrolla mejor a pleno sol, con suelo liviano y muy buen drenaje; una vez establecida tolera períodos secos.</p>
+                <a class="boton boton-descarga" href="info/lavanda.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta">
+              <h3>Salvia rosmarinus</h3>
+              <img src="imágenes/romero.jpg" alt="Planta de romero con follaje fino" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>El romero es un arbusto perenne y aromático. Necesita pleno sol, aireación y suelo seco a medianamente húmedo, siempre con drenaje excelente.</p>
+                <a class="boton boton-descarga" href="info/romero.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+
+            <article class="card-planta">
+              <h3>Hydrangea macrophylla</h3>
+              <img src="imágenes/hortensia.jpg" alt="Flores de hortensia rosadas y azules" loading="lazy">
+              <div class="info-planta">
+                <h4>Información de la planta</h4>
+                <p>La hortensia es un arbusto ornamental de flores grandes. Prefiere luz filtrada o media sombra, suelo húmedo y buen drenaje; el pH del suelo puede influir en el color de sus flores.</p>
+                <a class="boton boton-descarga" href="info/hortensia.pdf" download>Descargar PDF</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="contacto" class="seccion contacto">
+      <div class="contenedor dos-columnas">
+        <div class="texto-seccion">
+          <p class="etiqueta">Contacto</p>
+          <h2>Información de contacto</h2>
+          <p>Un canal directo para consultas sobre las plantas o el sitio.</p>
+        </div>
+
+        <form class="formulario" action="#" method="post">
+          <label for="nombres">Nombre/s:</label>
+          <input type="text" id="nombres" name="nombres" placeholder="Franco Matías">
+
+          <label for="apellido">Apellido:</label>
+          <input type="text" id="apellido" name="apellido" placeholder="Dogil">
+
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+54 9 11 3841-6928">
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="franndogil@gmail.com">
+
+          <button class="boton" type="submit">Enviar información</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="mantenimiento" class="seccion mantenimiento">
+      <div class="contenedor dos-columnas">
+        <div class="texto-seccion">
+          <p class="etiqueta">Mantenimiento</p>
+          <h2>¿Te interesa tener un sitio web similar?</h2>
+          <p>Puedo ayudarte a mantener una página simple, clara y adaptable a celulares, tablets y computadoras.</p>
+        </div>
+        <div class="datos-mantenimiento">
+          <p><strong>Franco Matías Dogil</strong></p>
+          <p>Teléfono: <a href="tel:+5491138416928">+54 9 11 3841-6928</a></p>
+          <p>Email: <a href="mailto:franndogil@gmail.com">franndogil@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p>Información recopilada de <a href="https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/propagating-monstera-deliciosa">University of Minnesota Extension</a> y <a href="https://plants.ces.ncsu.edu/">NC State Extension Gardener Plant Toolbox</a>.</p>
+      <p>Imágenes obtenidas desde Wikimedia Commons y guardadas localmente en la carpeta <strong>imágenes</strong>. Fichas PDF guardadas en <strong>info</strong>.</p>
+    </div>
+  </footer>
+</body>
+</html>
